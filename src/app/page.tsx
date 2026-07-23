@@ -8,10 +8,9 @@ import Contact from "@/components/sections/Contact";
 import Footer from "@/components/layout/Footer";
 import ScrollToTop from "@/components/ui/ScrollToTop";
 import FadeIn from "@/components/ui/FadeIn";
-import { fetchPortfolioData } from "@/lib/api";
+import { portfolioData } from "@/data/portfolioData";
 
-export default async function Home() {
-  const portfolioData = await fetchPortfolioData();
+export default function Home() {
   const { siteAssets, personalInfo, skills, researches } = portfolioData;
 
   return (
