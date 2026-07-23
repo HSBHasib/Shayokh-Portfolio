@@ -1,15 +1,21 @@
 import { PortfolioData } from "@/types";
 
-const BACKEND_JSON_URL = "https://raw.githubusercontent.com/HSBHasib/Shayokh-Portfolio-Server/main/src/data/portfolioData.json";
+const BACKEND_JSON_URL = "https://raw.githubusercontent.com/HSBHasib/Shayokh-Portfolio-Server/main/data/portfolioData.json";
 
 export async function fetchPortfolioData(): Promise<PortfolioData> {
-  const response = await fetch(BACKEND_JSON_URL, {
-    cache: "no-store",
-  });
+  try {
+    const response = await fetch(BACKEND_JSON_URL, {
+      next: { revalidate: 3600 },
+    });
 
-  if (!response.ok) {
-    throw new Error("Failed to fetch portfolio data");
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error fetching portfolio data:", error);
+    throw error;
   }
-
-  return response.json();
 }
