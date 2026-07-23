@@ -1,12 +1,30 @@
+import Hero from "@/components/sections/Hero";
+import About from "@/components/sections/About";
+import Skills from "@/components/sections/Skills";
+import { portfolioData } from "@/data/portfolioData";
+
 export default function Home() {
+  const { siteAssets, personalInfo, skills } = portfolioData;
+
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center">
-      <div className="text-center">
-        <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-4">
-          Md Shayokh Mondol
-        </h1>
-        <p className="text-xl text-muted">Loading portfolio...</p>
-      </div>
-    </section>
+    <>
+      <Hero
+        name={personalInfo.name}
+        title={personalInfo.title}
+        bio={personalInfo.bio}
+        cvUrl={siteAssets.cv}
+        profilePic={siteAssets.profilePic}
+      />
+
+      <About
+        name={personalInfo.name}
+        institution={personalInfo.institution}
+        degree={personalInfo.degree}
+        bio={personalInfo.bio}
+        profilePic={siteAssets.profilePic}
+      />
+
+      <Skills skills={skills} />
+    </>
   );
 }
