@@ -31,7 +31,7 @@ export default function Hero({ name, title, bio, cvUrl, profilePic }: HeroProps)
       <div className="relative z-10 max-w-6xl mx-auto px-6 w-full pt-24 pb-16">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div className="text-center lg:text-left">
-            <p className="text-primary font-medium mb-5 uppercase tracking-widest text-sm">
+            <p className="text-primary font-medium mb-1 uppercase tracking-widest text-sm">
               Hello, I&apos;m
             </p>
 
