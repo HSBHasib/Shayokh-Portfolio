@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { ExternalLink, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -69,15 +70,13 @@ export default function Hero({ name, title, bio, cvUrl, profilePic }: HeroProps)
           {/* Right - Profile Picture */}
           <div className="flex justify-center lg:justify-end">
             <div className="relative">
-              <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border border-white/10">
-                <img
+              <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border border-white/10">
+                <Image
                   src={profilePic}
                   alt={name}
-                  className="w-full h-full object-cover"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&size=320&background=0a0a0a&color=f08787`;
-                  }}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 256px, 320px"
                 />
               </div>
               <div className="absolute -bottom-3 -right-2 bg-neutral-900/80 backdrop-blur-xl border border-white/10 px-4 py-1.5 rounded-2xl shadow-2xl z-30">

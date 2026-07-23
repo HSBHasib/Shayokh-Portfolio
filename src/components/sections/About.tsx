@@ -1,6 +1,7 @@
 "use client";
 
-import { GraduationCap, MapPin, Calendar, BookOpen } from "lucide-react";
+import Image from "next/image";
+import { GraduationCap, MapPin, Calendar } from "lucide-react";
 
 interface AboutProps {
   name: string;
@@ -36,14 +37,12 @@ export default function About({
             <div className="relative group">
               <div className="absolute -inset-4 bg-primary/20 blur-3xl rounded-2xl opacity-50 group-hover:opacity-80 transition duration-1000" />
               <div className="relative rounded-2xl overflow-hidden border border-white/5 bg-neutral-900">
-                <img
+                <Image
                   src={profilePic}
                   alt={name}
-                  className="w-full h-full object-cover"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&size=400&background=0a0a0a&color=f08787`;
-                  }}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 350px, 400px"
                 />
               </div>
             </div>

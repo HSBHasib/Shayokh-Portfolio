@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { Moon, Sun, Menu, X } from "lucide-react";
 import { useTheme } from "@/providers/ThemeProvider";
 import { cn } from "@/lib/utils";
@@ -49,25 +50,20 @@ export default function Navbar({ logoUrl, name }: NavbarProps) {
           {/* Left - Logo */}
           <a href="#home" className="flex-shrink-0">
             {logoUrl ? (
-              <img
-                src={logoUrl}
-                alt={name || "Logo"}
-                className="h-10 w-auto rounded-xl"
-                onError={(e) => {
-                  const target = e.target as HTMLImageElement;
-                  target.style.display = "none";
-                  target.nextElementSibling?.classList.remove("hidden");
-                }}
-              />
-            ) : null}
-            <span
-              className={cn(
-                "text-xl font-bold text-primary",
-                logoUrl ? "hidden" : ""
-              )}
-            >
-              {name?.split(" ").map((n) => n[0]).join("") || "SM"}
-            </span>
+              <div className="relative h-10 w-10 rounded-xl overflow-hidden">
+                <Image
+                  src={logoUrl}
+                  alt={name || "Logo"}
+                  fill
+                  className="object-contain"
+                  sizes="40px"
+                />
+              </div>
+            ) : (
+              <span className="text-xl font-bold text-primary">
+                {name?.split(" ").map((n) => n[0]).join("") || "SM"}
+              </span>
+            )}
           </a>
 
           {/* Center - Navigation (Glass style) */}
