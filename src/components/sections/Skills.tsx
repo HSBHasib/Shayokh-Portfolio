@@ -44,7 +44,7 @@ export default function Skills({ skills }: SkillsProps) {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-100px" }}
           className="text-center mb-12"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
@@ -62,7 +62,7 @@ export default function Skills({ skills }: SkillsProps) {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: index * 0.05 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: "-50px" }}
                 className={cn(
                   "group relative p-4 rounded-xl bg-card border border-border",
                   "hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10",
