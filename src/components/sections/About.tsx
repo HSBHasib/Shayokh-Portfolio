@@ -18,6 +18,9 @@ export default function About({
   bio,
   profilePic,
 }: AboutProps) {
+
+  console.log('image - ', profilePic);
+
   return (
     <section id="about" className="relative py-20 px-6 md:px-0">
       <div className="max-w-5xl mx-auto">
