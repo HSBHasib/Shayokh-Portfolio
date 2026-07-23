@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { FaGraduationCap } from "react-icons/fa";
 import { FiBook, FiMapPin, FiCalendar } from "react-icons/fi";
 
 interface AboutProps {
@@ -45,14 +46,10 @@ export default function About({
           </div>
 
           <div className="w-full md:flex-1 flex flex-col gap-10">
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <div className="bg-card rounded-2xl border border-border p-5 text-center shadow-sm">
                 <div className="text-3xl font-bold text-primary mb-1">4+</div>
                 <div className="text-xs text-muted">Publications</div>
-              </div>
-              <div className="bg-card rounded-2xl border border-border p-5 text-center shadow-sm">
-                <div className="text-3xl font-bold text-primary mb-1">50+</div>
-                <div className="text-xs text-muted">Citations</div>
               </div>
               <div className="bg-card rounded-2xl border border-border p-5 text-center shadow-sm">
                 <div className="text-3xl font-bold text-primary mb-1">14</div>
@@ -67,7 +64,7 @@ export default function About({
             <div className="flex flex-col gap-4">
               <div className="flex items-center gap-4 text-muted">
                 <div className="p-2.5 rounded-lg bg-primary/10 text-primary">
-                  <FiBook size={20} />
+                  <FaGraduationCap size={20} />
                 </div>
                 <span className="text-sm">{degree}</span>
               </div>
