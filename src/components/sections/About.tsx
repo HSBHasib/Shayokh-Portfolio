@@ -31,8 +31,8 @@ export default function About({
           </p>
         </div>
 
-        <div className="flex flex-col md:flex-row items-center md:items-start gap-14">
-          <div className="w-full md:flex-1 max-w-[350px] md:max-w-[400px]">
+        <div className="flex flex-col md:flex-row items-center md:items-start gap-10">
+          <div className="w-full md:flex-1 max-w-87.5 md:max-w-100">
             <div className="relative w-full aspect-square rounded-2xl overflow-hidden border border-border bg-card shadow-lg">
               <Image
                 src={aboutImage}
@@ -46,7 +46,7 @@ export default function About({
           </div>
 
           <div className="w-full md:flex-1 flex flex-col gap-10">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div className="grid grid-cols-2 sm:grid-cols-2 gap-5">
               <div className="bg-card rounded-2xl border border-border p-5 text-center shadow-sm">
                 <div className="text-3xl font-bold text-primary mb-1">4+</div>
                 <div className="text-xs text-muted">Publications</div>

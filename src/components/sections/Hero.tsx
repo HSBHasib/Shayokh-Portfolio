@@ -32,8 +32,8 @@ export default function Hero({ name, title, bio, cvUrl, profilePic }: HeroProps)
         <div className="flex flex-col-reverse lg:grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           {/* Text Content */}
           <div className="text-center lg:text-left">
-            <p className="text-primary font-medium mb-2 md:mb-4 uppercase tracking-widest text-xs md:text-sm">
-              Hello, I&apos;m
+            <p className="text-primary font-medium mb-2 md:mb-4 uppercase tracking-widest text-sm">
+              Hello, I'm
             </p>
 
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 md:mb-5 leading-tight text-foreground">
@@ -78,7 +78,7 @@ export default function Hero({ name, title, bio, cvUrl, profilePic }: HeroProps)
               </div>
 
               {/* Profile Image Container */}
-              <div className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-[60%_40%_30%_70%/60%_30%_70%_40%] overflow-hidden animate-[morph_10s_ease-in-out_infinite] border-4 border-primary/30 shadow-xl">
+              <div className="relative w-60 h-60 sm:w-56 sm:h-56 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-[60%_40%_30%_70%/60%_30%_70%_40%] overflow-hidden animate-[morph_10s_ease-in-out_infinite] border-4 border-primary/30 shadow-xl">
                 <Image
                   src={profilePic}
                   alt={name}
