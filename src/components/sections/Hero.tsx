@@ -58,17 +58,25 @@ export default function Hero({ name, title, bio, cvUrl, profilePic }: HeroProps)
 
           <div className="flex justify-center lg:justify-end">
             <div className="relative">
-              <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white shadow-lg">
+              {/* Animated Blob Background */}
+              <div className="absolute -inset-4 animate-[blob_8s_ease-in-out_infinite]">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/40 via-secondary/30 to-accent/40 rounded-[60%_40%_30%_70%/60%_30%_70%_40%] blur-xl" />
+              </div>
+
+              {/* Profile Image Container */}
+              <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-[60%_40%_30%_70%/60%_30%_70%_40%] overflow-hidden animate-[morph_8s_ease-in-out_infinite] border-4 border-white shadow-xl">
                 <Image
                   src={profilePic}
                   alt={name}
                   fill
-                  className="object-cover"
+                  className="object-cover scale-110"
                   sizes="(max-width: 768px) 256px, 320px"
                   loading="eager"
                   priority
                 />
               </div>
+
+              {/* Badge */}
               <div className="absolute -bottom-3 -right-2 bg-white border border-border px-4 py-1.5 rounded-2xl shadow-lg z-30">
                 <p className="text-[10px] uppercase tracking-widest font-semibold text-primary">
                   Researcher
