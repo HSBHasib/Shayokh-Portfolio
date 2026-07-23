@@ -117,7 +117,7 @@ export default function Contact({ email, linkedIn }: ContactProps) {
           </div>
 
           <div className="flex-1">
-            <form onSubmit={handleSubmit} className="space-y-5">
+            <form onSubmit={handleSubmit} className="space-y-5 bg-card border border-border rounded-2xl p-6 shadow-sm">
               <div className="grid sm:grid-cols-2 gap-5">
                 <input
                   type="text"
@@ -125,7 +125,7 @@ export default function Contact({ email, linkedIn }: ContactProps) {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3.5 bg-card border border-border rounded-xl text-foreground placeholder:text-muted focus:outline-none focus:border-primary transition-colors text-sm"
+                  className="w-full px-4 py-3.5 bg-background border border-border rounded-xl text-foreground placeholder:text-muted focus:outline-none focus:border-primary transition-colors text-sm"
                   placeholder="Your name"
                 />
                 <input
@@ -134,7 +134,7 @@ export default function Contact({ email, linkedIn }: ContactProps) {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3.5 bg-card border border-border rounded-xl text-foreground placeholder:text-muted focus:outline-none focus:border-primary transition-colors text-sm"
+                  className="w-full px-4 py-3.5 bg-background border border-border rounded-xl text-foreground placeholder:text-muted focus:outline-none focus:border-primary transition-colors text-sm"
                   placeholder="your@email.com"
                 />
               </div>
@@ -145,7 +145,7 @@ export default function Contact({ email, linkedIn }: ContactProps) {
                 value={formData.subject}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3.5 bg-card border border-border rounded-xl text-foreground placeholder:text-muted focus:outline-none focus:border-primary transition-colors text-sm"
+                className="w-full px-4 py-3.5 bg-background border border-border rounded-xl text-foreground placeholder:text-muted focus:outline-none focus:border-primary transition-colors text-sm"
                 placeholder="Subject"
               />
 
@@ -155,14 +155,14 @@ export default function Contact({ email, linkedIn }: ContactProps) {
                 onChange={handleChange}
                 required
                 rows={5}
-                className="w-full px-4 py-3.5 bg-card border border-border rounded-xl text-foreground placeholder:text-muted focus:outline-none focus:border-primary transition-colors text-sm resize-none"
+                className="w-full px-4 py-3.5 bg-background border border-border rounded-xl text-foreground placeholder:text-muted focus:outline-none focus:border-primary transition-colors text-sm resize-none"
                 placeholder="Your message..."
               />
 
               <button
                 type="submit"
                 disabled={status === "loading"}
-                className="flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-medium bg-primary text-white hover:bg-primary/90 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed text-sm"
+                className="flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-medium bg-primary text-white hover:bg-primary/90 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed text-sm w-full sm:w-auto"
               >
                 {status === "loading" ? (
                   <>

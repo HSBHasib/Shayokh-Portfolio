@@ -1,19 +1,12 @@
 "use client";
 
-import { Heart } from "lucide-react";
+import { Heart, Mail, Link, Globe } from "lucide-react";
 import { SocialLinks } from "@/types";
 
 interface FooterProps {
   socials: SocialLinks;
   name: string;
 }
-
-const socialConfig = [
-  { key: "researchGate" as keyof SocialLinks, label: "ResearchGate" },
-  { key: "googleScholar" as keyof SocialLinks, label: "Google Scholar" },
-  { key: "linkedIn" as keyof SocialLinks, label: "LinkedIn" },
-  { key: "facebook" as keyof SocialLinks, label: "Facebook" },
-];
 
 const navLinks = [
   { label: "Home", href: "#home" },
@@ -61,18 +54,41 @@ export default function Footer({ socials, name }: FooterProps) {
             <h3 className="text-sm font-bold uppercase mb-4 text-foreground">
               Connect
             </h3>
-            <div className="flex flex-wrap gap-3">
-              {socialConfig.map(({ key, label }) => (
-                <a
-                  key={key}
-                  href={socials[key]}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-xs text-muted hover:text-primary transition-colors"
-                >
-                  {label}
-                </a>
-              ))}
+            <div className="flex flex-col gap-3">
+              <a
+                href={socials.linkedIn}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-sm text-muted hover:text-primary transition-colors"
+              >
+                <Link size={16} />
+                LinkedIn
+              </a>
+              <a
+                href="https://github.com/HSBHasib"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-sm text-muted hover:text-primary transition-colors"
+              >
+                <Globe size={16} />
+                GitHub
+              </a>
+              <a
+                href={socials.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-sm text-muted hover:text-primary transition-colors"
+              >
+                <Globe size={16} />
+                Facebook
+              </a>
+              <a
+                href="mailto:hasibhsb19@gmail.com"
+                className="flex items-center gap-2 text-sm text-muted hover:text-primary transition-colors"
+              >
+                <Mail size={16} />
+                Email
+              </a>
             </div>
           </div>
         </div>
