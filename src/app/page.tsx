@@ -1,10 +1,11 @@
 import Hero from "@/components/sections/Hero";
 import About from "@/components/sections/About";
 import Skills from "@/components/sections/Skills";
+import Research from "@/components/sections/Research";
 import { portfolioData } from "@/data/portfolioData";
 
 export default function Home() {
-  const { siteAssets, personalInfo, skills } = portfolioData;
+  const { siteAssets, personalInfo, skills, researches } = portfolioData;
 
   return (
     <>
@@ -25,6 +26,8 @@ export default function Home() {
       />
 
       <Skills skills={skills} />
+
+      <Research researches={researches} />
     </>
   );
 }
