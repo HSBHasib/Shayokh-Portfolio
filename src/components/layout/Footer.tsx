@@ -33,7 +33,7 @@ export default function Footer({ socials, name }: FooterProps) {
             <h2 className="text-xl font-bold tracking-tighter mb-3 text-foreground">
               {name}
             </h2>
-            <p className="text-sm leading-relaxed font-medium max-w-[45%] text-muted">
+            <p className="text-sm leading-relaxed font-medium text-muted max-w-md">
               Energy & Electrical Engineering Researcher specializing in Power
               Electronics, Cryogenic Energy Storage, and Smart Grids.
             </p>
