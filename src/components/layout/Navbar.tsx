@@ -71,13 +71,13 @@ export default function Navbar({ logoLight, logoDark, name }: NavbarProps) {
           {/* Left - Logo */}
           <a href="#home" className="flex-shrink-0">
             {currentLogo ? (
-              <div className="relative h-10 w-10 rounded-xl overflow-hidden">
+              <div className="relative h-12 w-12">
                 <Image
                   src={currentLogo}
                   alt={name || "Logo"}
                   fill
                   className="object-contain"
-                  sizes="40px"
+                  sizes="48px"
                 />
               </div>
             ) : (
