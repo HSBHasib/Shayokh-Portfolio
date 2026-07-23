@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { GraduationCap, MapPin, Calendar } from "lucide-react";
+import { FiBook, FiMapPin, FiCalendar } from "react-icons/fi";
 
 interface AboutProps {
   name: string;
@@ -70,19 +70,19 @@ export default function About({
             <div className="flex flex-col gap-4">
               <div className="flex items-center gap-4 text-muted">
                 <div className="p-2.5 rounded-lg bg-primary/10 text-primary">
-                  <GraduationCap size={20} />
+                  <FiBook size={20} />
                 </div>
                 <span className="text-sm">{degree}</span>
               </div>
               <div className="flex items-center gap-4 text-muted">
                 <div className="p-2.5 rounded-lg bg-primary/10 text-primary">
-                  <MapPin size={20} />
+                  <FiMapPin size={20} />
                 </div>
                 <span className="text-sm">{institution}</span>
               </div>
               <div className="flex items-center gap-4 text-muted">
                 <div className="p-2.5 rounded-lg bg-primary/10 text-primary">
-                  <Calendar size={20} />
+                  <FiCalendar size={20} />
                 </div>
                 <span className="text-sm">2021 – 2025</span>
               </div>

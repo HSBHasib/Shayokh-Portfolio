@@ -2,15 +2,15 @@
 
 import { motion } from "framer-motion";
 import {
-  X,
-  ExternalLink,
-  BookOpen,
-  FileText,
-  Users,
-  Calendar,
-  Hash,
-  Download,
-} from "lucide-react";
+  FiX,
+  FiExternalLink,
+  FiBookOpen,
+  FiFileText,
+  FiUsers,
+  FiCalendar,
+  FiHash,
+  FiDownload,
+} from "react-icons/fi";
 import { Research } from "@/types";
 
 interface ResearchModalProps {
@@ -40,7 +40,7 @@ export default function ResearchModal({ research, onClose }: ResearchModalProps)
           onClick={onClose}
           className="absolute top-4 right-4 p-2 rounded-lg bg-background/50 text-muted hover:text-foreground hover:bg-background transition-colors z-10"
         >
-          <X size={20} />
+          <FiX size={20} />
         </button>
 
         <div className="p-6 md:p-8">
@@ -49,34 +49,34 @@ export default function ResearchModal({ research, onClose }: ResearchModalProps)
             <h2 className="text-xl md:text-2xl font-bold text-foreground mb-3 pr-10">
               {research.title}
             </h2>
-            <p className="text-primary font-medium">{research.journal}</p>
+            <p className="text-sm text-primary font-medium">{research.journal}</p>
           </div>
 
           {/* Meta Info */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6 p-4 bg-background/50 rounded-xl">
             <div className="flex items-center gap-2 text-sm text-card-foreground/70">
-              <Calendar size={16} className="text-primary" />
+              <FiCalendar size={16} className="text-primary" />
               <div>
                 <p className="text-xs text-muted">Published</p>
                 <p className="font-medium">{research.publicationDate}</p>
               </div>
             </div>
             <div className="flex items-center gap-2 text-sm text-card-foreground/70">
-              <Hash size={16} className="text-primary" />
+              <FiHash size={16} className="text-primary" />
               <div>
                 <p className="text-xs text-muted">DOI</p>
                 <p className="font-medium text-xs break-all">{research.doi}</p>
               </div>
             </div>
             <div className="flex items-center gap-2 text-sm text-card-foreground/70">
-              <BookOpen size={16} className="text-primary" />
+              <FiBookOpen size={16} className="text-primary" />
               <div>
                 <p className="text-xs text-muted">References</p>
                 <p className="font-medium">{research.referencesCount}</p>
               </div>
             </div>
             <div className="flex items-center gap-2 text-sm text-card-foreground/70">
-              <FileText size={16} className="text-primary" />
+              <FiFileText size={16} className="text-primary" />
               <div>
                 <p className="text-xs text-muted">Figures</p>
                 <p className="font-medium">{research.figuresCount}</p>
@@ -87,7 +87,7 @@ export default function ResearchModal({ research, onClose }: ResearchModalProps)
           {/* Authors */}
           <div className="mb-6">
             <h3 className="flex items-center gap-2 text-sm font-semibold text-foreground mb-3">
-              <Users size={16} className="text-primary" />
+              <FiUsers size={16} className="text-primary" />
               Authors
             </h3>
             <div className="flex flex-wrap gap-2">
@@ -156,7 +156,7 @@ export default function ResearchModal({ research, onClose }: ResearchModalProps)
               className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium hover:opacity-90 transition-colors"
               style={{ backgroundColor: "var(--button-bg)", color: "var(--button-text)" }}
             >
-              <ExternalLink size={16} />
+              <FiExternalLink size={16} />
               DOI Link
             </a>
             {research.pdfUrl && (
@@ -167,7 +167,7 @@ export default function ResearchModal({ research, onClose }: ResearchModalProps)
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium hover:opacity-90 transition-colors"
                 style={{ backgroundColor: "var(--button-bg)", color: "var(--button-text)" }}
               >
-                <Download size={16} />
+                <FiDownload size={16} />
                 View PDF
               </a>
             )}
@@ -178,7 +178,7 @@ export default function ResearchModal({ research, onClose }: ResearchModalProps)
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-card border border-border text-card-foreground text-sm font-medium hover:border-primary/50 transition-colors"
               >
-                <ExternalLink size={16} />
+                <FiExternalLink size={16} />
                 Google Scholar
               </a>
             )}
@@ -189,7 +189,7 @@ export default function ResearchModal({ research, onClose }: ResearchModalProps)
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-card border border-border text-card-foreground text-sm font-medium hover:border-primary/50 transition-colors"
               >
-                <ExternalLink size={16} />
+                <FiExternalLink size={16} />
                 ResearchGate
               </a>
             )}

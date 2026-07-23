@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Mail, Send, Loader2 } from "lucide-react";
+import { FiMail, FiSend, FiLoader } from "react-icons/fi";
 import toast from "react-hot-toast";
 
 interface ContactProps {
@@ -77,7 +77,7 @@ export default function Contact({ email, linkedIn }: ContactProps) {
               className="flex items-center gap-4 p-5 bg-gradient-to-r from-primary/5 to-transparent border border-border rounded-2xl hover:shadow-md hover:border-primary/20 transition-all duration-300 group"
             >
               <div className="p-3 rounded-lg bg-primary/10 text-primary group-hover:bg-primary/20 transition-colors">
-                <Mail size={20} />
+                <FiMail size={20} />
               </div>
               <div>
                 <p className="text-xs text-muted">Email</p>
@@ -171,12 +171,12 @@ export default function Contact({ email, linkedIn }: ContactProps) {
               >
                 {loading ? (
                   <>
-                    <Loader2 size={16} className="animate-spin" />
+                    <FiLoader size={16} className="animate-spin" />
                     Sending...
                   </>
                 ) : (
                   <>
-                    <Send size={16} />
+                    <FiSend size={16} />
                     Send Message
                   </>
                 )}

@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import { Moon, Sun, Menu, X } from "lucide-react";
+import { FiMoon, FiSun, FiMenu, FiX } from "react-icons/fi";
 import { useTheme } from "@/providers/ThemeProvider";
 import { cn } from "@/lib/utils";
 
@@ -131,9 +131,9 @@ export default function Navbar({ logoUrl, name }: NavbarProps) {
               aria-label="Toggle theme"
             >
               {theme === "dark" ? (
-                <Sun size={18} className="transition-transform duration-300" />
+                <FiSun size={18} className="transition-transform duration-300" />
               ) : (
-                <Moon size={18} className="transition-transform duration-300" />
+                <FiMoon size={18} className="transition-transform duration-300" />
               )}
             </button>
 
@@ -143,7 +143,7 @@ export default function Navbar({ logoUrl, name }: NavbarProps) {
               className="md:hidden p-2 rounded-full border border-border bg-card text-muted hover:text-foreground hover:bg-card/80 transition-all duration-300"
               aria-label="Toggle menu"
             >
-              {mobileOpen ? <X size={18} /> : <Menu size={18} />}
+              {mobileOpen ? <FiX size={18} /> : <FiMenu size={18} />}
             </button>
           </div>
         </div>

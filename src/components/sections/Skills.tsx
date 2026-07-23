@@ -2,40 +2,40 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import {
-  Cpu,
-  Zap,
-  BarChart3,
-  Battery,
-  Sun,
-  Bot,
-  Lightbulb,
-  Settings,
-  Users,
-  BookOpen,
-  Globe,
-} from "lucide-react";
+  FiCpu,
+  FiZap,
+  FiBarChart2,
+  FiBattery,
+  FiSun,
+  FiActivity,
+  FiAward,
+  FiSettings,
+  FiUsers,
+  FiBookOpen,
+  FiGlobe,
+} from "react-icons/fi";
 
 interface SkillsProps {
   skills: string[];
 }
 
 const skillIcons: Record<string, React.ElementType> = {
-  "MATLAB Simulation": BarChart3,
-  "Control Theory": Settings,
-  "Electrical & Electronics Engineering": Cpu,
-  "Electrical Power Engineering": Zap,
-  "Power Systems Analysis": BarChart3,
-  "Power Systems Simulation": Battery,
-  "Renewable Energy Technologies": Sun,
-  "Automation & Robotics": Bot,
-  "Power Generation": Zap,
-  "Problem Solving": Lightbulb,
-  "Program Management": Settings,
-  "Digital Media": Globe,
-  "Human Resources (HR)": Users,
-  "Training and Development": BookOpen,
+  "MATLAB Simulation": FiBarChart2,
+  "Control Theory": FiSettings,
+  "Electrical & Electronics Engineering": FiCpu,
+  "Electrical Power Engineering": FiZap,
+  "Power Systems Analysis": FiBarChart2,
+  "Power Systems Simulation": FiBattery,
+  "Renewable Energy Technologies": FiSun,
+  "Automation & Robotics": FiActivity,
+  "Power Generation": FiZap,
+  "Problem Solving": FiAward,
+  "Program Management": FiSettings,
+  "Digital Media": FiGlobe,
+  "Human Resources (HR)": FiUsers,
+  "Training and Development": FiBookOpen,
 };
 
 export default function Skills({ skills }: SkillsProps) {
@@ -114,7 +114,7 @@ export default function Skills({ skills }: SkillsProps) {
               className="grid grid-cols-2 md:grid-cols-4 gap-4"
             >
               {currentSkills.map((skill) => {
-                const Icon = skillIcons[skill] || Cpu;
+                const Icon = skillIcons[skill] || FiCpu;
                 return (
                   <div
                     key={skill}
@@ -140,7 +140,7 @@ export default function Skills({ skills }: SkillsProps) {
               disabled={currentPage === 0}
               className="p-2 rounded-full border border-border text-muted hover:text-foreground hover:bg-card transition-all disabled:opacity-30 disabled:cursor-not-allowed"
             >
-              <ChevronLeft size={20} />
+              <FiChevronLeft size={20} />
             </button>
             <div className="flex items-center gap-2">
               {Array.from({ length: totalPages }).map((_, i) => (
@@ -162,7 +162,7 @@ export default function Skills({ skills }: SkillsProps) {
               disabled={currentPage === totalPages - 1}
               className="p-2 rounded-full border border-border text-muted hover:text-foreground hover:bg-card transition-all disabled:opacity-30 disabled:cursor-not-allowed"
             >
-              <ChevronRight size={20} />
+              <FiChevronRight size={20} />
             </button>
           </div>
         )}

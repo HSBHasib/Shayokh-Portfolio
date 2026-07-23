@@ -1,18 +1,18 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { GraduationCap, MapPin, BookOpen, Award } from "lucide-react";
+import { FiBook, FiMapPin, FiBookOpen, FiAward } from "react-icons/fi";
 
 export default function Education() {
   return (
-    <section id="education" className="pb-24 px-6">
+    <section id="education" className="py-24 px-6">
       <div className="max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-12"
+          className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-foreground">
             Education
@@ -35,7 +35,7 @@ export default function Education() {
           <div className="flex flex-col md:flex-row">
             {/* Left - Year */}
             <div className="md:w-48 bg-primary/5 border-b md:border-b-0 md:border-r border-border p-8 flex flex-col items-center justify-center gap-3">
-              <GraduationCap size={32} className="text-primary mb-1" />
+              <FiBook size={32} className="text-primary mb-1" />
               <div className="flex md:flex-col items-center gap-3">
                 <span className="text-xl font-bold text-primary">2021</span>
                 <div className="w-8 h-[2px] bg-primary/30 md:w-[2px] md:h-8" />
@@ -51,7 +51,7 @@ export default function Education() {
                   Bachelor of Electrical Engineering
                 </h3>
                 <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium">
-                  <Award size={12} />
+                  <FiAward size={12} />
                   Completed
                 </span>
               </div>
@@ -62,11 +62,11 @@ export default function Education() {
 
               <div className="flex flex-wrap items-center gap-5 text-sm text-muted mb-5">
                 <span className="flex items-center gap-1.5">
-                  <MapPin size={14} className="text-primary" />
+                  <FiMapPin size={14} className="text-primary" />
                   Nanjing, China
                 </span>
                 <span className="flex items-center gap-1.5">
-                  <BookOpen size={14} className="text-primary" />
+                  <FiBookOpen size={14} className="text-primary" />
                   Full Time
                 </span>
               </div>

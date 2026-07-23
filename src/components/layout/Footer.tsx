@@ -1,6 +1,6 @@
 "use client";
 
-import { Heart, Mail } from "lucide-react";
+import { FiHeart, FiMail } from "react-icons/fi";
 import { SocialLinks } from "@/types";
 
 interface FooterProps {
@@ -81,7 +81,7 @@ export default function Footer({ socials, name }: FooterProps) {
                 href="mailto:hasibhsb19@gmail.com"
                 className="flex items-center gap-2 text-sm text-muted hover:text-primary transition-colors"
               >
-                <Mail size={16} />
+                <FiMail size={16} />
                 Email
               </a>
             </div>
@@ -90,7 +90,7 @@ export default function Footer({ socials, name }: FooterProps) {
 
         <div className="mt-12 pt-8 border-t border-border">
           <p className="flex justify-center items-center gap-1.5 text-xs uppercase tracking-widest text-muted">
-            <Heart size={12} className="text-primary" />
+            <FiHeart size={12} className="text-primary" />
             {new Date().getFullYear()} {name}. All rights reserved.
           </p>
         </div>

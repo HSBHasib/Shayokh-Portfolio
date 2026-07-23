@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { ArrowUp } from "lucide-react";
+import { FiArrowUp } from "react-icons/fi";
 
 export default function ScrollToTop() {
   const [isVisible, setIsVisible] = useState(false);
@@ -27,7 +27,7 @@ export default function ScrollToTop() {
       className="fixed bottom-8 right-8 z-40 p-3 rounded-full bg-primary text-white shadow-lg shadow-primary/30 hover:bg-primary/90 hover:shadow-xl transition-all duration-300"
       aria-label="Scroll to top"
     >
-      <ArrowUp size={20} />
+      <FiArrowUp size={20} />
     </button>
   );
 }

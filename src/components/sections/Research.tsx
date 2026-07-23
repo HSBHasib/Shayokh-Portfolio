@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Calendar, BookOpen, ChevronLeft, ChevronRight, FileText } from "lucide-react";
+import { FiCalendar, FiBookOpen, FiChevronLeft, FiChevronRight, FiFileText } from "react-icons/fi";
 import ResearchModal from "@/components/ui/ResearchModal";
 import { Research as ResearchType } from "@/types";
 
@@ -54,14 +54,14 @@ export default function Research({ researches }: ResearchProps) {
   };
 
   return (
-    <section id="research" className="pb-24 px-6">
+    <section id="research" className="py-24 px-6">
       <div className="max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-12"
+          className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-foreground">
             Research
@@ -99,11 +99,11 @@ export default function Research({ researches }: ResearchProps) {
 
                     <div className="flex flex-wrap items-center gap-4 text-xs text-muted mb-4">
                       <span className="flex items-center gap-1">
-                        <Calendar size={14} />
+                        <FiCalendar size={14} />
                         {research.publicationDate}
                       </span>
                       <span className="flex items-center gap-1">
-                        <BookOpen size={14} />
+                        <FiBookOpen size={14} />
                         {research.referencesCount} references
                       </span>
                     </div>
@@ -141,7 +141,7 @@ export default function Research({ researches }: ResearchProps) {
                         style={{ backgroundColor: "var(--button-bg)", color: "var(--button-text)" }}
                         onClick={(e) => e.stopPropagation()}
                       >
-                        <FileText size={14} />
+                        <FiFileText size={14} />
                         View PDF
                       </a>
                     ) : (
@@ -149,7 +149,7 @@ export default function Research({ researches }: ResearchProps) {
                         disabled
                         className="flex-1 px-4 py-2.5 text-sm font-medium rounded-xl bg-muted/20 text-muted cursor-not-allowed flex items-center justify-center gap-2"
                       >
-                        <FileText size={14} />
+                        <FiFileText size={14} />
                         Soon
                       </button>
                     )}
@@ -161,13 +161,13 @@ export default function Research({ researches }: ResearchProps) {
         </div>
 
         {totalPages > 1 && (
-          <div className="flex items-center justify-center gap-4">
+          <div className="flex items-center justify-center gap-4 mt-12">
             <button
               onClick={goPrev}
               disabled={currentPage === 0}
               className="p-2.5 rounded-full border border-border text-muted hover:text-foreground hover:bg-card transition-all disabled:opacity-30 disabled:cursor-not-allowed"
             >
-              <ChevronLeft size={20} />
+              <FiChevronLeft size={20} />
             </button>
 
             <div className="flex items-center gap-3">
@@ -191,7 +191,7 @@ export default function Research({ researches }: ResearchProps) {
               disabled={currentPage === totalPages - 1}
               className="p-2.5 rounded-full border border-border text-muted hover:text-foreground hover:bg-card transition-all disabled:opacity-30 disabled:cursor-not-allowed"
             >
-              <ChevronRight size={20} />
+              <FiChevronRight size={20} />
             </button>
           </div>
         )}
