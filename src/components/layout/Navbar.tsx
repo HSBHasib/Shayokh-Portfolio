@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { Moon, Sun, Menu, X } from "lucide-react";
 import { useTheme } from "@/providers/ThemeProvider";
@@ -24,6 +24,9 @@ export default function Navbar({ logoUrl, name }: NavbarProps) {
   const { theme, toggleTheme } = useTheme();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+  const [indicatorStyle, setIndicatorStyle] = useState({ left: 0, width: 0 });
+  const navRef = useRef<HTMLDivElement>(null);
+  const linkRefs = useRef<Map<string, HTMLAnchorElement>>(new Map());
 
   useEffect(() => {
     const handleScroll = () => {
@@ -42,6 +45,21 @@ export default function Navbar({ logoUrl, name }: NavbarProps) {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    const activeLink = linkRefs.current.get(activeSection);
+    const navContainer = navRef.current;
+
+    if (activeLink && navContainer) {
+      const navRect = navContainer.getBoundingClientRect();
+      const linkRect = activeLink.getBoundingClientRect();
+
+      setIndicatorStyle({
+        left: linkRect.left - navRect.left,
+        width: linkRect.width,
+      });
+    }
+  }, [activeSection]);
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 py-4">
@@ -68,7 +86,19 @@ export default function Navbar({ logoUrl, name }: NavbarProps) {
 
           {/* Center - Navigation */}
           <div className="hidden md:block">
-            <nav className="flex items-center gap-2 rounded-full border border-border bg-card/80 backdrop-blur-md px-4 py-2 shadow-sm">
+            <div
+              ref={navRef}
+              className="relative flex items-center gap-1 rounded-full border border-border bg-card/80 backdrop-blur-md px-2 py-2 shadow-sm"
+            >
+              {/* Animated Indicator */}
+              <div
+                className="absolute top-1/2 -translate-y-1/2 h-[calc(100%-16px)] bg-primary/10 rounded-full transition-all duration-300 ease-out"
+                style={{
+                  left: `${indicatorStyle.left}px`,
+                  width: `${indicatorStyle.width}px`,
+                }}
+              />
+
               {navLinks.map((link) => {
                 const sectionId = link.href.replace("#", "");
                 const isActive = activeSection === sectionId;
@@ -76,10 +106,13 @@ export default function Navbar({ logoUrl, name }: NavbarProps) {
                   <a
                     key={link.href}
                     href={link.href}
+                    ref={(el) => {
+                      if (el) linkRefs.current.set(sectionId, el);
+                    }}
                     className={cn(
-                      "px-3 py-1 text-sm font-medium transition-colors rounded-full",
+                      "relative z-10 px-3 py-1 text-sm font-medium transition-colors duration-200",
                       isActive
-                        ? "text-primary bg-primary/10"
+                        ? "text-primary"
                         : "text-muted hover:text-foreground"
                     )}
                   >
@@ -87,7 +120,7 @@ export default function Navbar({ logoUrl, name }: NavbarProps) {
                   </a>
                 );
               })}
-            </nav>
+            </div>
           </div>
 
           {/* Right - Theme Toggle */}
