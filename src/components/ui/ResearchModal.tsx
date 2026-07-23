@@ -153,7 +153,7 @@ export default function ResearchModal({ research, onClose }: ResearchModalProps)
               href={`https://doi.org/${research.doi}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-white text-sm font-medium hover:bg-primary/90 transition-colors"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-[#E8786B] to-[#f0877b] text-white text-sm font-medium hover:opacity-90 transition-colors dark:bg-[#E8E8E8] dark:text-black dark:hover:bg-[#d4d4d4]"
             >
               <ExternalLink size={16} />
               DOI Link
@@ -163,7 +163,7 @@ export default function ResearchModal({ research, onClose }: ResearchModalProps)
                 href={research.pdfUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-foreground text-background text-sm font-medium hover:opacity-90 transition-colors"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-[#E8786B] to-[#f0877b] text-white text-sm font-medium hover:opacity-90 transition-colors dark:bg-[#E8E8E8] dark:text-black dark:hover:bg-[#d4d4d4]"
               >
                 <Download size={16} />
                 View PDF

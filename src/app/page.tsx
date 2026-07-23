@@ -29,7 +29,7 @@ export default function Home() {
         institution={personalInfo.institution}
         degree={personalInfo.degree}
         bio={personalInfo.bio}
-        profilePic={siteAssets.profilePic}
+        aboutImage={siteAssets.aboutImage}
       />
 
       <Skills skills={skills} />

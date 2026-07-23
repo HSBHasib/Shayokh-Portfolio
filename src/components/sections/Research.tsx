@@ -137,7 +137,7 @@ export default function Research({ researches }: ResearchProps) {
                         href={research.pdfUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex-1 px-4 py-2.5 text-sm font-medium rounded-xl bg-[#E8E8E8] text-black hover:bg-[#d4d4d4] transition-colors flex items-center justify-center gap-2"
+                        className="flex-1 px-4 py-2.5 text-sm font-medium rounded-xl bg-gradient-to-r from-[#E8786B] to-[#f0877b] text-white hover:opacity-90 transition-colors flex items-center justify-center gap-2 dark:bg-[#E8E8E8] dark:text-black dark:hover:bg-[#d4d4d4]"
                         onClick={(e) => e.stopPropagation()}
                       >
                         <FileText size={14} />

@@ -8,7 +8,7 @@ interface AboutProps {
   institution: string;
   degree: string;
   bio: string;
-  profilePic: string;
+  aboutImage: string;
 }
 
 export default function About({
@@ -16,12 +16,12 @@ export default function About({
   institution,
   degree,
   bio,
-  profilePic,
+  aboutImage,
 }: AboutProps) {
   return (
-    <section id="about" className="pb-24 px-6">
+    <section id="about" className="py-24 px-6">
       <div className="max-w-5xl mx-auto">
-        <div className="text-center mb-12">
+        <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground">
             About
           </h2>
@@ -37,7 +37,7 @@ export default function About({
           <div className="w-full md:flex-1 max-w-[350px] md:max-w-[400px]">
             <div className="relative w-full aspect-square rounded-2xl overflow-hidden border border-border bg-card shadow-lg">
               <Image
-                src={profilePic}
+                src={aboutImage}
                 alt={name}
                 fill
                 className="object-cover"
@@ -48,10 +48,14 @@ export default function About({
           </div>
 
           <div className="w-full md:flex-1 flex flex-col gap-10">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
               <div className="bg-card rounded-2xl border border-border p-5 text-center shadow-sm">
                 <div className="text-3xl font-bold text-primary mb-1">4+</div>
                 <div className="text-xs text-muted">Publications</div>
+              </div>
+              <div className="bg-card rounded-2xl border border-border p-5 text-center shadow-sm">
+                <div className="text-3xl font-bold text-primary mb-1">50+</div>
+                <div className="text-xs text-muted">Citations</div>
               </div>
               <div className="bg-card rounded-2xl border border-border p-5 text-center shadow-sm">
                 <div className="text-3xl font-bold text-primary mb-1">14</div>

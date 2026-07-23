@@ -8,6 +8,7 @@ export interface SocialLinks {
 export interface SiteAssets {
   logo: string;
   profilePic: string;
+  aboutImage: string;
   cv: string;
 }
 

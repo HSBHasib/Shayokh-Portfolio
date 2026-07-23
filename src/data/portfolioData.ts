@@ -4,6 +4,7 @@ export const portfolioData: PortfolioData = {
   siteAssets: {
     logo: "https://lh3.googleusercontent.com/d/11Fo42VKRBi66UdEstHAm1u0LOVbT8aA-",
     profilePic: "https://lh3.googleusercontent.com/d/1VLc31QiFWgC-7KAyGhQuLNDcRpDXEQiG",
+    aboutImage: "https://lh3.googleusercontent.com/d/1zQ_lJ5z0MnEU4Wtwc_FuXlAkMpDkPNbc",
     cv: "https://drive.google.com/file/d/1f0i-soW-7_ecmCTiGUDO4JZmXssGhBlI/view?usp=sharing",
   },
   personalInfo: {
