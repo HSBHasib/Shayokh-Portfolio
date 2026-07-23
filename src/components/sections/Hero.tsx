@@ -15,7 +15,7 @@ export default function Hero({ name, title, bio, cvUrl, profilePic }: HeroProps)
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16"
     >
       {/* Spotlight Background */}
       <div className="absolute inset-0 overflow-hidden">

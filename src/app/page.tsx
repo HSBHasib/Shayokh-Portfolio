@@ -1,3 +1,4 @@
+import Navbar from "@/components/layout/Navbar";
 import Hero from "@/components/sections/Hero";
 import About from "@/components/sections/About";
 import Skills from "@/components/sections/Skills";
@@ -13,6 +14,8 @@ export default function Home() {
 
   return (
     <>
+      <Navbar logoUrl={siteAssets.logo} name={personalInfo.name} />
+
       <Hero
         name={personalInfo.name}
         title={personalInfo.title}
@@ -36,7 +39,7 @@ export default function Home() {
       <Education />
 
       <Contact
-        email={personalInfo.socials.researchGate ? "hasibhsb19@gmail.com" : "hasibhsb19@gmail.com"}
+        email="hasibhsb19@gmail.com"
         linkedIn={personalInfo.socials.linkedIn}
       />
 

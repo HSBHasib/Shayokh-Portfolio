@@ -15,7 +15,6 @@
 }
 
 :root {
-  /* Dark Mode (Default) */
   --background: #030712;
   --foreground: #f8fafc;
   --primary: #f08787;
@@ -28,7 +27,6 @@
 }
 
 [data-theme="light"] {
-  /* Light Mode with Pastel Accents */
   --background: #fef7f0;
   --foreground: #1e293b;
   --primary: #f08787;
@@ -40,29 +38,23 @@
   --accent: #fee2ad;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 ::selection {
-  background: var(--primary);
+  background-color: var(--primary);
   color: white;
 }
 
-/* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -80,14 +72,9 @@ body {
   background: var(--muted);
 }
 
-/* Custom Animations */
 @keyframes spin-slow {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 .animate-spin-slow {

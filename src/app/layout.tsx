@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/providers/ThemeProvider";
-import Navbar from "@/components/layout/Navbar";
-import { portfolioData } from "@/data/portfolioData";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,19 +24,14 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const { siteAssets, personalInfo } = portfolioData;
-
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable}`}
       suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col">
-        <ThemeProvider>
-          <Navbar logoUrl={siteAssets.logo} name={personalInfo.name} />
-          <main className="flex-1">{children}</main>
-        </ThemeProvider>
+      <body>
+        <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
   );
