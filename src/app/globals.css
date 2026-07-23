@@ -24,6 +24,8 @@
   --border: #e5e5e5;
   --muted: #737373;
   --accent: #fde8d0;
+  --button-bg: #E8786B;
+  --button-text: #ffffff;
 }
 
 [data-theme="dark"] {
@@ -36,6 +38,8 @@
   --border: #1f1f1f;
   --muted: #8a8a8a;
   --accent: #a78bfa;
+  --button-bg: #E8E8E8;
+  --button-text: #000000;
 }
 
 html {

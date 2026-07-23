@@ -166,7 +166,8 @@ export default function Contact({ email, linkedIn }: ContactProps) {
               <button
                 type="submit"
                 disabled={loading}
-                className="flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-medium bg-gradient-to-r from-[#E8786B] to-[#f0877b] text-white hover:opacity-90 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed text-sm w-full sm:w-auto dark:bg-[#E8E8E8] dark:text-black dark:hover:bg-[#d4d4d4]"
+                className="flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-medium hover:opacity-90 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed text-sm w-full sm:w-auto"
+                style={{ backgroundColor: "var(--button-bg)", color: "var(--button-text)" }}
               >
                 {loading ? (
                   <>
