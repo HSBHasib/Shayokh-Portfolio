@@ -62,16 +62,18 @@ export default function Navbar({ logoLight, logoDark, name }: NavbarProps) {
     }
   }, [activeSection]);
 
+  const currentLogo = theme === "dark" ? logoDark : logoLight;
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 py-4">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           {/* Left - Logo */}
           <a href="#home" className="flex-shrink-0">
-            {logoLight && logoDark ? (
+            {currentLogo ? (
               <div className="relative h-10 w-10 rounded-xl overflow-hidden">
                 <Image
-                  src={theme === "dark" ? logoDark : logoLight}
+                  src={currentLogo}
                   alt={name || "Logo"}
                   fill
                   className="object-contain"

@@ -31,7 +31,7 @@ export default function About({
           </p>
         </div>
 
-        <div className="flex flex-col md:flex-row items-center md:items-start gap-16">
+        <div className="flex flex-col md:flex-row items-center md:items-start gap-14">
           <div className="w-full md:flex-1 max-w-[350px] md:max-w-[400px]">
             <div className="relative w-full aspect-square rounded-2xl overflow-hidden border border-border bg-card shadow-lg">
               <Image
