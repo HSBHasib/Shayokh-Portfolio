@@ -24,6 +24,8 @@ export default function Hero({ name, title, bio, cvUrl, profilePic }: HeroProps)
     return () => clearInterval(interval);
   }, []);
 
+  console.log('img - ', profilePic);
+
   return (
     <section id="home" className="relative min-h-screen flex items-center">
       <div className="absolute top-1/3 left-0 w-[400px] h-[400px] bg-primary/8 rounded-full blur-[100px]" />

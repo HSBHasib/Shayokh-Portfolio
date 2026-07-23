@@ -5,7 +5,7 @@ const BACKEND_JSON_URL = "https://raw.githubusercontent.com/HSBHasib/Shayokh-Por
 export async function fetchPortfolioData(): Promise<PortfolioData> {
   try {
     const response = await fetch(BACKEND_JSON_URL, {
-      next: { revalidate: 3600 },
+      cache: "no-store",
     });
 
     if (!response.ok) {
