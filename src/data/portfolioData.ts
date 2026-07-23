@@ -61,7 +61,7 @@ export const portfolioData: PortfolioData = {
         "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=9fCguakAAAAJ&citation_for_view=9fCguakAAAAJ:d1gkVwhDpl0C",
       researchGateLink:
         "https://www.researchgate.net/publication/397702126_High-Efficiency_Power_Electronics_Researching_Wide-Bandgap_Semiconductors_for_Power_Conversion_Systems_with_Higher_Efficiency_and_Thermal_Performance",
-      pdfUrl: "",
+      pdfUrl: "https://drive.google.com/file/d/1zX5YHEQzv3NVwJkdQaDYIRk1vs9vfp9w/view?usp=sharing",
       abstract:
         "Power electronics applications including renewable energy power conversion systems along with electric vehicles (EVs), industrial automation systems, and telecommunication depend on power conversion systems to meet their rising demand requirements. Such industries need power conversion systems with capabilities to handle high voltage, high temperature, and high frequency operation. Power electronics systems use silicon-based semiconductors as the foundation of their operation, but these components are insufficient to handle current demands. The need for materials that exceed existing performance in voltage applications and thermal conditions as well as switching properties remains high. Temperamental WBG semiconductors SiC and GaN stand as promising alternative materials for high voltage along with high temperature and high frequency applications. SiC stands out because it combines efficient thermal conductivity with high voltage tolerance and thus is useful for power-train systems, industrial motors, and power grid installations in electric vehicles. GaN devices provide quick switching behavior alongside higher electron mobility and enable use in small high-frequency power converters, solar inverters, and power supplies. The investigation examines power conversion systems through which SiC and GaN semiconductors show electrically conductive properties together with thermal conductive properties. The research results revealed that both SiC and GaN devices surpass silicon-based devices by 4 to nearly 9 percent in terms of operating efficiency. Junction temperature decreases by 30-40% under high load conditions for SiC devices, whereas GaN-based devices achieve a 15-20% improvement compared to silicon.",
       keywords: [
@@ -96,7 +96,7 @@ export const portfolioData: PortfolioData = {
         "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=9fCguakAAAAJ&citation_for_view=9fCguakAAAAJ:u-x6o8ySG0sC",
       researchGateLink:
         "https://www.researchgate.net/publication/397459425_Exploring_the_Future_of_Optical_Fiber_Communications_Technologies_and_Applications",
-      pdfUrl: "",
+      pdfUrl: "https://drive.google.com/file/d/1-CUrxvm4nd_UMnA87cpOSBlbzotNbKlB/view?usp=sharing",
       abstract:
         "Optical fiber communication (OFC) has entirely transformed communication by enabling data to be carried at lightning speeds over long distances with high bandwidth and low losses. This paper examines the future of optical fiber communications including innovations such as Dense Wavelength Division Multiplexing (DWDM) and Quantum Key Distribution (QKD) to enhance network capacity and security. The study evaluates optical fiber systems using mathematical models such as the Shannon-Hartley law and Beer-Lambert law. Findings indicate how DWDM enhances efficiency by running multiple data streams through the same fiber, while QKD offers quantum mechanics-based privacy against cyber threats. Furthermore, the paper explores how OFC facilitates 5G, 6G, IoT, Fiber-to-the-Home (FTTH), and addresses signal degradation, rural deployment costs, and environmental fiber disposal challenges.",
       keywords: [
@@ -134,7 +134,7 @@ export const portfolioData: PortfolioData = {
         "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=9fCguakAAAAJ&citation_for_view=9fCguakAAAAJ:u5HHmVD_uO8C",
       researchGateLink:
         "https://www.researchgate.net/publication/396419661_Revolutionary_Cryogenic_Energy_Storage_for_Ultra-Efficient_Power_and_Smart_Grids_North_American_Academic_Research",
-      pdfUrl: "",
+      pdfUrl: "https://drive.google.com/file/d/1Sm_R9eIOfeuUcIt8ZGODEjY9fCMaW8En/view?usp=sharing",
       abstract:
         "As the world transitions to renewable energy sources, scalable energy storage solutions for grid stability are in high demand. Traditional storage such as Li-ion batteries and hydrogen experience scaling and efficiency limits. This paper proposes Cryogenic Energy Storage (CES), which uses cryogenic fluids at ultra-low temperatures to store and release energy effectively. Utilizing thermodynamic modeling, dynamic phase transition analysis, Multi-objective optimization, Monte Carlo simulations, Model Predictive Control (MPC), and Reinforcement Learning (RL), the system optimizes energy dispatch. Results prove CES outperforms traditional battery technologies in NPV, IRR, CAPEX sensitivity, and dispatch stability for large-scale smart grids.",
       keywords: [
@@ -172,7 +172,7 @@ export const portfolioData: PortfolioData = {
         "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=9fCguakAAAAJ&citation_for_view=9fCguakAAAAJ:d1gkVwhDpl0C",
       researchGateLink:
         "https://www.researchgate.net/publication/397683780_High-Efficiency_Power_Electronics_Researching_Wide-Bandgap_Semiconductors_for_Power_Conversion_Systems_with_Higher_Efficiency_and_Thermal_Performance",
-      pdfUrl: "",
+      pdfUrl: "https://drive.google.com/file/d/17HGh58QF8myZ3D4zatqUvUVcpUOzA7EZ/view?usp=sharing",
       abstract:
         "Power electronics applications across EVs, solar inverters, and industrial motor drives require higher voltage handling, thermal stability, and switching speeds. This study evaluates SiC MOSFETs and GaN HEMTs against silicon devices in DC-DC converters and inverters. Experimental analysis demonstrates that SiC and GaN surpass silicon devices by 4 to 9 percent in efficiency, with SiC showing exceptional junction temperature reductions (30-40%) under heavy thermal load conditions.",
       keywords: [

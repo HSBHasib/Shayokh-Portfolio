@@ -36,83 +36,81 @@ export default function Research({ researches }: ResearchProps) {
           </p>
         </div>
 
-        {/* Research Cards */}
-        <div className="space-y-6">
+        {/* Research Cards - 2 per row */}
+        <div className="grid md:grid-cols-2 gap-6">
           {currentResearches.map((research) => (
             <div
               key={research.id}
-              className="group bg-card rounded-2xl border border-border p-6 hover:shadow-md transition-all duration-300"
+              className="group bg-card rounded-2xl border border-border p-6 hover:shadow-md transition-all duration-300 flex flex-col"
             >
-              <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
-                <div className="flex-1 min-w-0">
-                  <h3 className="text-lg font-semibold text-foreground mb-2 line-clamp-2 group-hover:text-primary transition-colors">
-                    {research.title}
-                  </h3>
-                  <p className="text-sm text-primary mb-3">{research.journal}</p>
+              <div className="flex-1">
+                <h3 className="text-base font-semibold text-foreground mb-2 line-clamp-2 group-hover:text-primary transition-colors">
+                  {research.title}
+                </h3>
+                <p className="text-xs text-primary mb-3">{research.journal}</p>
 
-                  <div className="flex flex-wrap items-center gap-4 text-xs text-muted">
-                    <span className="flex items-center gap-1">
-                      <Calendar size={14} />
-                      {research.publicationDate}
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <BookOpen size={14} />
-                      {research.referencesCount} references
-                    </span>
-                  </div>
-
-                  <div className="mt-3 flex flex-wrap gap-2">
-                    {research.keywords.slice(0, 3).map((keyword) => (
-                      <span
-                        key={keyword}
-                        className="px-2 py-1 text-xs rounded-full bg-primary/10 text-primary"
-                      >
-                        {keyword}
-                      </span>
-                    ))}
-                    {research.keywords.length > 3 && (
-                      <span className="px-2 py-1 text-xs rounded-full bg-border text-muted">
-                        +{research.keywords.length - 3}
-                      </span>
-                    )}
-                  </div>
+                <div className="flex flex-wrap items-center gap-3 text-xs text-muted mb-3">
+                  <span className="flex items-center gap-1">
+                    <Calendar size={12} />
+                    {research.publicationDate}
+                  </span>
+                  <span className="flex items-center gap-1">
+                    <BookOpen size={12} />
+                    {research.referencesCount} ref
+                  </span>
                 </div>
 
-                {/* Action Buttons */}
-                <div className="flex md:flex-col gap-2 flex-shrink-0">
-                  <button
-                    onClick={() => setSelectedResearch(research)}
-                    className="px-4 py-2 text-sm font-medium rounded-xl border border-border text-foreground hover:bg-card transition-colors"
-                  >
-                    View Details
-                  </button>
-                  {research.pdfUrl ? (
-                    <a
-                      href={research.pdfUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="px-4 py-2 text-sm font-medium rounded-xl bg-primary text-white hover:bg-primary/90 transition-colors flex items-center gap-2"
-                      onClick={(e) => e.stopPropagation()}
+                <div className="flex flex-wrap gap-1.5 mb-4">
+                  {research.keywords.slice(0, 2).map((keyword) => (
+                    <span
+                      key={keyword}
+                      className="px-2 py-0.5 text-[10px] rounded-full bg-primary/10 text-primary"
                     >
-                      <FileText size={14} />
-                      View PDF
-                    </a>
-                  ) : (
-                    <button
-                      disabled
-                      className="px-4 py-2 text-sm font-medium rounded-xl bg-muted/20 text-muted cursor-not-allowed flex items-center gap-2"
-                    >
-                      <FileText size={14} />
-                      PDF Soon
-                    </button>
+                      {keyword}
+                    </span>
+                  ))}
+                  {research.keywords.length > 2 && (
+                    <span className="px-2 py-0.5 text-[10px] rounded-full bg-border text-muted">
+                      +{research.keywords.length - 2}
+                    </span>
                   )}
                 </div>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="flex gap-2 mt-auto">
+                <button
+                  onClick={() => setSelectedResearch(research)}
+                  className="flex-1 px-3 py-2 text-xs font-medium rounded-xl border border-border text-foreground hover:bg-background transition-colors"
+                >
+                  Details
+                </button>
+                {research.pdfUrl ? (
+                  <a
+                    href={research.pdfUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 px-3 py-2 text-xs font-medium rounded-xl bg-primary text-white hover:bg-primary/90 transition-colors flex items-center justify-center gap-1.5"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <FileText size={12} />
+                    View PDF
+                  </a>
+                ) : (
+                  <button
+                    disabled
+                    className="flex-1 px-3 py-2 text-xs font-medium rounded-xl bg-muted/20 text-muted cursor-not-allowed flex items-center justify-center gap-1.5"
+                  >
+                    <FileText size={12} />
+                    Soon
+                  </button>
+                )}
               </div>
             </div>
           ))}
         </div>
 
-        {/* Pagination */}
+        {/* Pagination - Numbered */}
         {totalPages > 1 && (
           <div className="flex items-center justify-center gap-4 mt-10">
             <button
@@ -128,12 +126,14 @@ export default function Research({ researches }: ResearchProps) {
                 <button
                   key={i}
                   onClick={() => setCurrentPage(i)}
-                  className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+                  className={`w-8 h-8 rounded-full text-sm font-medium transition-all duration-300 ${
                     currentPage === i
-                      ? "bg-primary w-6"
-                      : "bg-border hover:bg-muted"
+                      ? "bg-primary text-white"
+                      : "border border-border text-muted hover:text-foreground hover:bg-card"
                   }`}
-                />
+                >
+                  {i + 1}
+                </button>
               ))}
             </div>
 
