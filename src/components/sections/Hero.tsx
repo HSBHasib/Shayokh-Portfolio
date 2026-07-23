@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { ExternalLink, ArrowRight } from "lucide-react";
 
@@ -11,7 +12,18 @@ interface HeroProps {
   profilePic: string;
 }
 
+const titles = ["BSC Graduate", "EEE", "Researcher", "Power Electronics"];
+
 export default function Hero({ name, title, bio, cvUrl, profilePic }: HeroProps) {
+  const [titleIndex, setTitleIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTitleIndex((prev) => (prev + 1) % titles.length);
+    }, 2500);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section id="home" className="relative min-h-screen flex items-center">
       <div className="absolute top-1/3 left-0 w-[400px] h-[400px] bg-primary/8 rounded-full blur-[100px]" />
@@ -64,7 +76,7 @@ export default function Hero({ name, title, bio, cvUrl, profilePic }: HeroProps)
               </div>
 
               {/* Profile Image Container */}
-              <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-[60%_40%_30%_70%/60%_30%_70%_40%] overflow-hidden animate-[morph_10s_ease-in-out_infinite] border-4 border-white shadow-xl">
+              <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-[60%_40%_30%_70%/60%_30%_70%_40%] overflow-hidden animate-[morph_10s_ease-in-out_infinite] border-4 border-primary/30 shadow-xl">
                 <Image
                   src={profilePic}
                   alt={name}
@@ -77,10 +89,10 @@ export default function Hero({ name, title, bio, cvUrl, profilePic }: HeroProps)
                 />
               </div>
 
-              {/* Badge */}
-              <div className="absolute -bottom-3 -right-2 bg-white border border-border px-4 py-1.5 rounded-2xl shadow-lg z-30">
-                <p className="text-[10px] uppercase tracking-widest font-semibold text-primary">
-                  Researcher
+              {/* Animated Badge */}
+              <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-card border border-border px-5 py-2 rounded-full shadow-lg z-30">
+                <p className="text-[11px] uppercase tracking-widest font-semibold text-primary whitespace-nowrap">
+                  {titles[titleIndex]}
                 </p>
               </div>
             </div>
