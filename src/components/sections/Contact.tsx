@@ -103,7 +103,7 @@ export default function Contact({ email, linkedIn }: ContactProps) {
             </a>
 
             <a
-              href="https://wa.me/"
+              href="https://wa.me/8801725656293"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-4 p-5 bg-gradient-to-r from-[#25D366]/5 to-transparent border border-border rounded-2xl hover:shadow-md hover:border-[#25D366]/30 transition-all duration-300 group"
@@ -115,7 +115,7 @@ export default function Contact({ email, linkedIn }: ContactProps) {
               </div>
               <div>
                 <p className="text-xs text-muted">WhatsApp</p>
-                <p className="text-sm text-foreground font-medium">Message me</p>
+                <p className="text-sm text-foreground font-medium">+880 1725 656 293</p>
               </div>
             </a>
           </div>
