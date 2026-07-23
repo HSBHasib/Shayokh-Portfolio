@@ -65,97 +65,130 @@ export default function Navbar({ logoLight, logoDark, name }: NavbarProps) {
   const currentLogo = theme === "dark" ? logoDark : logoLight;
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 py-4">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between">
-          {/* Left - Logo */}
-          <a href="#home" className="flex-shrink-0">
-            {currentLogo ? (
-              <div className="relative h-12 w-12">
-                <Image
-                  src={currentLogo}
-                  alt={name || "Logo"}
-                  fill
-                  className="object-contain"
-                  sizes="48px"
-                />
-              </div>
-            ) : (
-              <span className="text-xl font-bold text-primary">
-                {name?.split(" ").map((n) => n[0]).join("") || "SM"}
-              </span>
-            )}
-          </a>
+    <>
+      <header className="fixed top-0 left-0 right-0 z-50 py-3 md:py-4">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between">
+            {/* Left - Logo */}
+            <a href="#home" className="flex-shrink-0">
+              {currentLogo ? (
+                <div className="relative h-10 w-10 md:h-12 md:w-12">
+                  <Image
+                    src={currentLogo}
+                    alt={name || "Logo"}
+                    fill
+                    className="object-contain"
+                    sizes="48px"
+                  />
+                </div>
+              ) : (
+                <span className="text-xl font-bold text-primary">
+                  {name?.split(" ").map((n) => n[0]).join("") || "SM"}
+                </span>
+              )}
+            </a>
 
-          {/* Center - Navigation */}
-          <div className="hidden md:block">
-            <div
-              ref={navRef}
-              className="relative flex items-center gap-1 rounded-full border border-border bg-card/80 backdrop-blur-md px-2 py-2 shadow-sm"
-            >
-              {/* Animated Indicator */}
+            {/* Center - Navigation (Desktop) */}
+            <div className="hidden lg:block">
               <div
-                className="absolute top-1/2 -translate-y-1/2 h-[calc(100%-16px)] bg-primary/10 rounded-full transition-all duration-300 ease-out"
-                style={{
-                  left: `${indicatorStyle.left}px`,
-                  width: `${indicatorStyle.width}px`,
-                }}
-              />
+                ref={navRef}
+                className="relative flex items-center gap-1 rounded-full border border-border bg-card/80 backdrop-blur-md px-2 py-2 shadow-sm"
+              >
+                <div
+                  className="absolute top-1/2 -translate-y-1/2 h-[calc(100%-16px)] bg-primary/10 rounded-full transition-all duration-300 ease-out"
+                  style={{
+                    left: `${indicatorStyle.left}px`,
+                    width: `${indicatorStyle.width}px`,
+                  }}
+                />
 
-              {navLinks.map((link) => {
-                const sectionId = link.href.replace("#", "");
-                const isActive = activeSection === sectionId;
-                return (
-                  <a
-                    key={link.href}
-                    href={link.href}
-                    ref={(el) => {
-                      if (el) linkRefs.current.set(sectionId, el);
-                    }}
-                    className={cn(
-                      "relative z-10 px-3 py-1 text-sm font-medium transition-colors duration-200",
-                      isActive
-                        ? "text-primary"
-                        : "text-muted hover:text-foreground"
-                    )}
-                  >
-                    {link.label}
-                  </a>
-                );
-              })}
+                {navLinks.map((link) => {
+                  const sectionId = link.href.replace("#", "");
+                  const isActive = activeSection === sectionId;
+                  return (
+                    <a
+                      key={link.href}
+                      href={link.href}
+                      ref={(el) => {
+                        if (el) linkRefs.current.set(sectionId, el);
+                      }}
+                      className={cn(
+                        "relative z-10 px-3 py-1 text-sm font-medium transition-colors duration-200",
+                        isActive
+                          ? "text-primary"
+                          : "text-muted hover:text-foreground"
+                      )}
+                    >
+                      {link.label}
+                    </a>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Right - Theme Toggle & Mobile Menu */}
+            <div className="flex items-center gap-2 md:gap-3">
+              <button
+                onClick={toggleTheme}
+                className="p-2 rounded-full border border-border bg-card text-muted hover:text-foreground hover:bg-card/80 transition-all duration-300"
+                aria-label="Toggle theme"
+              >
+                {theme === "dark" ? (
+                  <FiSun size={18} />
+                ) : (
+                  <FiMoon size={18} />
+                )}
+              </button>
+
+              {/* Mobile Menu Button */}
+              <button
+                onClick={() => setMobileOpen(!mobileOpen)}
+                className="lg:hidden p-2 rounded-full border border-border bg-card text-muted hover:text-foreground hover:bg-card/80 transition-all duration-300"
+                aria-label="Toggle menu"
+              >
+                {mobileOpen ? <FiX size={18} /> : <FiMenu size={18} />}
+              </button>
             </div>
           </div>
+        </div>
+      </header>
 
-          {/* Right - Theme Toggle */}
-          <div className="flex items-center gap-3">
-            <button
-              onClick={toggleTheme}
-              className="p-2 rounded-full border border-border bg-card text-muted hover:text-foreground hover:bg-card/80 transition-all duration-300 hover:rotate-45"
-              aria-label="Toggle theme"
-            >
-              {theme === "dark" ? (
-                <FiSun size={18} className="transition-transform duration-300" />
-              ) : (
-                <FiMoon size={18} className="transition-transform duration-300" />
-              )}
-            </button>
+      {/* Mobile Sidebar */}
+      <div
+        className={cn(
+          "fixed inset-0 z-[60] lg:hidden transition-all duration-300",
+          mobileOpen ? "visible" : "invisible"
+        )}
+      >
+        {/* Backdrop */}
+        <div
+          className={cn(
+            "absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity duration-300",
+            mobileOpen ? "opacity-100" : "opacity-0"
+          )}
+          onClick={() => setMobileOpen(false)}
+        />
 
-            {/* Mobile Menu Button */}
+        {/* Sidebar */}
+        <div
+          className={cn(
+            "absolute right-0 top-0 h-full w-72 bg-card border-l border-border shadow-2xl transition-transform duration-300 ease-out",
+            mobileOpen ? "translate-x-0" : "translate-x-full"
+          )}
+        >
+          {/* Sidebar Header */}
+          <div className="flex items-center justify-between p-4 border-b border-border">
+            <span className="font-semibold text-foreground">Menu</span>
             <button
-              onClick={() => setMobileOpen(!mobileOpen)}
-              className="md:hidden p-2 rounded-full border border-border bg-card text-muted hover:text-foreground hover:bg-card/80 transition-all duration-300"
-              aria-label="Toggle menu"
+              onClick={() => setMobileOpen(false)}
+              className="p-2 rounded-lg hover:bg-background text-muted hover:text-foreground transition-colors"
             >
-              {mobileOpen ? <FiX size={18} /> : <FiMenu size={18} />}
+              <FiX size={20} />
             </button>
           </div>
-        </div>
-      </div>
 
-      {/* Mobile Menu */}
-      {mobileOpen && (
-        <div className="md:hidden mt-2 mx-4 bg-card border border-border rounded-2xl shadow-lg overflow-hidden">
-          <nav className="flex flex-col p-4 gap-1">
+          {/* Navigation Links */}
+          <nav className="p-4 space-y-1">
             {navLinks.map((link) => {
               const sectionId = link.href.replace("#", "");
               const isActive = activeSection === sectionId;
@@ -165,10 +198,10 @@ export default function Navbar({ logoLight, logoDark, name }: NavbarProps) {
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
                   className={cn(
-                    "px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200",
+                    "flex items-center px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200",
                     isActive
                       ? "text-primary bg-primary/10"
-                      : "text-muted hover:text-foreground hover:bg-card"
+                      : "text-muted hover:text-foreground hover:bg-background"
                   )}
                 >
                   {link.label}
@@ -176,8 +209,15 @@ export default function Navbar({ logoLight, logoDark, name }: NavbarProps) {
               );
             })}
           </nav>
+
+          {/* Sidebar Footer */}
+          <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-border">
+            <p className="text-xs text-muted text-center">
+              Md Shayokh Mondol
+            </p>
+          </div>
         </div>
-      )}
-    </header>
+      </div>
+    </>
   );
 }
