@@ -16,11 +16,12 @@ const navLinks = [
 ];
 
 interface NavbarProps {
-  logoUrl?: string;
+  logoLight?: string;
+  logoDark?: string;
   name?: string;
 }
 
-export default function Navbar({ logoUrl, name }: NavbarProps) {
+export default function Navbar({ logoLight, logoDark, name }: NavbarProps) {
   const { theme, toggleTheme } = useTheme();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
@@ -67,10 +68,10 @@ export default function Navbar({ logoUrl, name }: NavbarProps) {
         <div className="flex items-center justify-between">
           {/* Left - Logo */}
           <a href="#home" className="flex-shrink-0">
-            {logoUrl ? (
+            {logoLight && logoDark ? (
               <div className="relative h-10 w-10 rounded-xl overflow-hidden">
                 <Image
-                  src={logoUrl}
+                  src={theme === "dark" ? logoDark : logoLight}
                   alt={name || "Logo"}
                   fill
                   className="object-contain"

@@ -16,7 +16,7 @@ export default async function Home() {
 
   return (
     <>
-      <Navbar logoUrl={siteAssets.logo} name={personalInfo.name} />
+      <Navbar logoLight={siteAssets.logoLight} logoDark={siteAssets.logoDark} name={personalInfo.name} />
 
       <Hero
         name={personalInfo.name}
