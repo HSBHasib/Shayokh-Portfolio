@@ -28,14 +28,14 @@
 
 [data-theme="dark"] {
   --background: #000000;
-  --foreground: #ededed;
-  --primary: #c084fc;
-  --secondary: #d8b4fe;
-  --card: #0a0a0a;
-  --card-foreground: #d4d4d4;
-  --border: #1f1f1f;
-  --muted: #737373;
-  --accent: #c084fc;
+  --foreground: #fafafa;
+  --primary: #a78bfa;
+  --secondary: #c4b5fd;
+  --card: #09090b;
+  --card-foreground: #a1a1aa;
+  --border: #18181b;
+  --muted: #52525b;
+  --accent: #a78bfa;
 }
 
 html {
@@ -73,11 +73,11 @@ body {
 }
 
 [data-theme="dark"] ::-webkit-scrollbar-thumb {
-  background: #333333;
+  background: #27272a;
 }
 
 [data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
-  background: #525252;
+  background: #3f3f46;
 }
 
 @keyframes blob {
