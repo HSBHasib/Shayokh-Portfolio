@@ -57,7 +57,7 @@ export default function Contact({ email, linkedIn }: ContactProps) {
 
   return (
     <section id="contact" className="pb-24 px-6">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-5xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground">
             Get in Touch
@@ -67,7 +67,7 @@ export default function Contact({ email, linkedIn }: ContactProps) {
           </p>
         </div>
 
-        <div className="flex flex-col md:flex-row gap-12">
+        <div className="flex flex-col md:flex-row gap-8">
           <div className="w-full md:w-[35%] flex flex-col gap-5">
             <a
               href={`mailto:${email}`}

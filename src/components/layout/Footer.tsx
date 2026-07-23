@@ -19,7 +19,7 @@ const navLinks = [
 export default function Footer({ socials, name }: FooterProps) {
   return (
     <footer className="border-t border-border">
-      <div className="px-6 pt-14 max-w-5xl mx-auto">
+      <div className="px-6 pt-14 max-w-6xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-6 gap-12">
           <div className="md:col-span-4">
             <h2 className="text-xl font-bold tracking-tighter mb-2 text-foreground">

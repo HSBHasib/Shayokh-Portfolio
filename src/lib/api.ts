@@ -1,10 +1,10 @@
 import { PortfolioData } from "@/types";
 
-const BACKEND_JSON_URL = "https://raw.githubusercontent.com/HSBHasib/Shayokh-Portfolio-Server/main/data/portfolioData.json";
+const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || "https://raw.githubusercontent.com/HSBHasib/Shayokh-Portfolio-Server/main/data/portfolioData.json";
 
 export async function fetchPortfolioData(): Promise<PortfolioData> {
   try {
-    const response = await fetch(BACKEND_JSON_URL, {
+    const response = await fetch(BACKEND_URL, {
       cache: "no-store",
     });
 
