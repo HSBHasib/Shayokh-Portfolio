@@ -1,9 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
 import { Mail, Link, MessageCircle, Send, Loader2, CheckCircle } from "lucide-react";
-import SectionHeading from "@/components/ui/SectionHeading";
 import { cn } from "@/lib/utils";
 import { ContactFormData, ContactResponse } from "@/types";
 
@@ -60,20 +58,19 @@ export default function Contact({ email, linkedIn }: ContactProps) {
   return (
     <section id="contact" className="py-20 bg-card/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionHeading
-          title="Get In Touch"
-          subtitle="Feel free to reach out for collaborations or inquiries"
-        />
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+            Get In Touch
+          </h2>
+          <div className="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto" />
+          <p className="mt-4 text-muted max-w-2xl mx-auto">
+            Feel free to reach out for collaborations or inquiries
+          </p>
+        </div>
 
         <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
           {/* Left - Contact Info */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true, margin: "-100px" }}
-            className="space-y-6"
-          >
+          <div className="space-y-6">
             <h3 className="text-xl font-semibold text-foreground">
               Contact Information
             </h3>
@@ -130,15 +127,10 @@ export default function Contact({ email, linkedIn }: ContactProps) {
                 </div>
               </a>
             </div>
-          </motion.div>
+          </div>
 
           {/* Right - Contact Form */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            viewport={{ once: true, margin: "-100px" }}
-          >
+          <div>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid sm:grid-cols-2 gap-4">
                 <div>
@@ -240,27 +232,19 @@ export default function Contact({ email, linkedIn }: ContactProps) {
               </button>
 
               {status === "success" && (
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="flex items-center gap-2 p-3 rounded-xl bg-green-500/10 text-green-500 text-sm"
-                >
+                <div className="flex items-center gap-2 p-3 rounded-xl bg-green-500/10 text-green-500 text-sm">
                   <CheckCircle size={18} />
                   {responseMessage}
-                </motion.div>
+                </div>
               )}
 
               {status === "error" && (
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="flex items-center gap-2 p-3 rounded-xl bg-red-500/10 text-red-500 text-sm"
-                >
+                <div className="flex items-center gap-2 p-3 rounded-xl bg-red-500/10 text-red-500 text-sm">
                   {responseMessage}
-                </motion.div>
+                </div>
               )}
             </form>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

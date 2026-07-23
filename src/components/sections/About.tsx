@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { GraduationCap, MapPin, Calendar } from "lucide-react";
 
 interface AboutProps {
@@ -21,28 +20,16 @@ export default function About({
   return (
     <section id="about" className="py-20 bg-card/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true, margin: "-100px" }}
-          className="text-center mb-12"
-        >
+        <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
             About Me
           </h2>
           <div className="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto" />
-        </motion.div>
+        </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left - Image */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true, margin: "-100px" }}
-            className="flex justify-center"
-          >
+          <div className="flex justify-center">
             <div className="relative">
               <div className="absolute -inset-2 bg-gradient-to-r from-primary/30 to-secondary/30 rounded-2xl blur-lg" />
               <div className="relative rounded-2xl overflow-hidden bg-card border border-border">
@@ -57,16 +44,10 @@ export default function About({
                 />
               </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* Right - Content */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            viewport={{ once: true, margin: "-100px" }}
-            className="space-y-6"
-          >
+          <div className="space-y-6">
             <h3 className="text-2xl font-semibold text-foreground">
               Electrical Engineering Researcher at{" "}
               <span className="text-primary">NUIST</span>
@@ -88,7 +69,7 @@ export default function About({
                 <span>2021 – 2025</span>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

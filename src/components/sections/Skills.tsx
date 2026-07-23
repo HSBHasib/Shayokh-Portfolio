@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import {
   Cpu,
   Zap,
@@ -40,29 +39,19 @@ export default function Skills({ skills }: SkillsProps) {
   return (
     <section id="skills" className="py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true, margin: "-100px" }}
-          className="text-center mb-12"
-        >
+        <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
             Skills & Expertise
           </h2>
           <div className="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto" />
-        </motion.div>
+        </div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {skills.map((skill, index) => {
+          {skills.map((skill) => {
             const Icon = skillIcons[skill] || Cpu;
             return (
-              <motion.div
+              <div
                 key={skill}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: index * 0.05 }}
-                viewport={{ once: true, margin: "-50px" }}
                 className={cn(
                   "group relative p-4 rounded-xl bg-card border border-border",
                   "hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10",
@@ -77,7 +66,7 @@ export default function Skills({ skills }: SkillsProps) {
                     {skill}
                   </span>
                 </div>
-              </motion.div>
+              </div>
             );
           })}
         </div>

@@ -1,9 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Calendar, BookOpen, ExternalLink, ChevronRight } from "lucide-react";
-import SectionHeading from "@/components/ui/SectionHeading";
+import { AnimatePresence } from "framer-motion";
+import { Calendar, BookOpen, ChevronRight } from "lucide-react";
 import ResearchModal from "@/components/ui/ResearchModal";
 import { Research as ResearchType } from "@/types";
 
@@ -19,19 +18,20 @@ export default function Research({ researches }: ResearchProps) {
   return (
     <section id="research" className="py-20 bg-card/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionHeading
-          title="Research Publications"
-          subtitle="Published papers in power electronics, optical communications, and cryogenic energy storage"
-        />
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+            Research Publications
+          </h2>
+          <div className="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto" />
+          <p className="mt-4 text-muted max-w-2xl mx-auto">
+            Published papers in power electronics, optical communications, and cryogenic energy storage
+          </p>
+        </div>
 
         <div className="grid md:grid-cols-2 gap-6">
-          {researches.map((research, index) => (
-            <motion.div
+          {researches.map((research) => (
+            <div
               key={research.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: index * 0.1 }}
-              viewport={{ once: true, margin: "-50px" }}
               className="group relative bg-card border border-border rounded-xl p-6 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 transition-all duration-300 cursor-pointer"
               onClick={() => setSelectedResearch(research)}
             >
@@ -80,7 +80,7 @@ export default function Research({ researches }: ResearchProps) {
                   className="text-muted group-hover:text-primary group-hover:translate-x-1 transition-all flex-shrink-0 mt-1"
                 />
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

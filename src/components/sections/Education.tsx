@@ -1,26 +1,23 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { GraduationCap, MapPin, Calendar } from "lucide-react";
-import SectionHeading from "@/components/ui/SectionHeading";
 
 export default function Education() {
   return (
     <section id="education" className="py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionHeading
-          title="Education"
-          subtitle="Academic journey and qualifications"
-        />
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+            Education
+          </h2>
+          <div className="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto" />
+          <p className="mt-4 text-muted max-w-2xl mx-auto">
+            Academic journey and qualifications
+          </p>
+        </div>
 
         <div className="max-w-2xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true, margin: "-100px" }}
-            className="relative pl-8 border-l-2 border-primary/30"
-          >
+          <div className="relative pl-8 border-l-2 border-primary/30">
             {/* Timeline Dot */}
             <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-primary" />
 
@@ -50,7 +47,7 @@ export default function Education() {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>
