@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import {
   Cpu,
   Zap,
@@ -35,6 +36,21 @@ const skillIcons: Record<string, React.ElementType> = {
   "Training and Development": BookOpen,
 };
 
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.05,
+    },
+  },
+};
+
+const item = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0 },
+};
+
 export default function Skills({ skills }: SkillsProps) {
   return (
     <section id="skills" className="py-20 px-4">
@@ -49,13 +65,20 @@ export default function Skills({ skills }: SkillsProps) {
           </p>
         </div>
 
-        {/* Skills Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        {/* Skills Grid with Animation */}
+        <motion.div
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-100px" }}
+          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
+        >
           {skills.map((skill) => {
             const Icon = skillIcons[skill] || Cpu;
             return (
-              <div
+              <motion.div
                 key={skill}
+                variants={item}
                 className="flex items-center gap-3 p-4 rounded-xl border border-border bg-background hover:border-primary/30 hover:bg-primary/5 transition-all duration-200 group"
               >
                 <div className="p-2 rounded-lg bg-primary/10 text-primary group-hover:bg-primary/20 transition-colors">
@@ -64,10 +87,10 @@ export default function Skills({ skills }: SkillsProps) {
                 <span className="text-sm font-medium text-foreground">
                   {skill}
                 </span>
-              </div>
+              </motion.div>
             );
           })}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

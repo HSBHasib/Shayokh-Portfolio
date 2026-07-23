@@ -68,6 +68,8 @@ export default function Hero({ name, title, bio, cvUrl, profilePic }: HeroProps)
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 256px, 320px"
+                  loading="eager"
+                  priority
                 />
               </div>
               <div className="absolute -bottom-3 -right-2 bg-white border border-border px-4 py-1.5 rounded-2xl shadow-lg z-30">

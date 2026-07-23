@@ -41,6 +41,7 @@ export default function About({
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 350px, 400px"
+                loading="lazy"
               />
             </div>
           </div>
