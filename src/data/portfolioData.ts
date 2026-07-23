@@ -2,8 +2,8 @@ import { PortfolioData } from "@/types";
 
 export const portfolioData: PortfolioData = {
   siteAssets: {
-    logo: "https://drive.google.com/file/d/11kzThZ5N3Mh1WRVW1XpuFFUG_epfe65j/view?usp=sharing",
-    profilePic: "https://drive.google.com/file/d/11Fo42VKRBi66UdEstHAm1u0LOVbT8aA-/view?usp=sharing",
+    logo: "https://drive.google.com/uc?export=view&id=11kzThZ5N3Mh1WRVW1XpuFFUG_epfe65j",
+    profilePic: "https://drive.google.com/uc?export=view&id=11Fo42VKRBi66UdEstHAm1u0LOVbT8aA-",
     cv: "https://drive.google.com/file/d/1f0i-soW-7_ecmCTiGUDO4JZmXssGhBlI/view?usp=sharing",
   },
   personalInfo: {
