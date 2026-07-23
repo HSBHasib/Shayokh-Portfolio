@@ -2,12 +2,22 @@
 
 import { useState } from "react";
 import { Mail, Link, MessageCircle, Send, Loader2, CheckCircle } from "lucide-react";
-import { cn } from "@/lib/utils";
-import { ContactFormData, ContactResponse } from "@/types";
 
 interface ContactProps {
   email: string;
   linkedIn: string;
+}
+
+interface ContactFormData {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+}
+
+interface ContactResponse {
+  success: boolean;
+  message: string;
 }
 
 export default function Contact({ email, linkedIn }: ContactProps) {
@@ -56,190 +66,140 @@ export default function Contact({ email, linkedIn }: ContactProps) {
   };
 
   return (
-    <section id="contact" className="py-20 bg-card/50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Get In Touch
+    <section id="contact" className="py-20 px-4">
+      <div className="max-w-3xl mx-auto">
+        {/* Section Header */}
+        <div className="space-y-2 text-center mb-12">
+          <h2 className="bg-gradient-to-b from-white to-neutral-400 bg-clip-text text-3xl md:text-4xl font-bold text-transparent">
+            Get in Touch
           </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto" />
-          <p className="mt-4 text-muted max-w-2xl mx-auto">
-            Feel free to reach out for collaborations or inquiries
+          <p className="text-neutral-500 text-sm font-medium italic">
+            Contact Me
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+        <div className="flex flex-col md:flex-row justify-center items-start gap-10">
           {/* Left - Contact Info */}
-          <div className="space-y-6">
-            <h3 className="text-xl font-semibold text-foreground">
-              Contact Information
-            </h3>
-            <p className="text-card-foreground/70">
-              I&apos;m always open to discussing research opportunities,
-              collaborations, or academic inquiries.
-            </p>
+          <div className="w-full md:w-[35%] space-y-4">
+            <a
+              href={`mailto:${email}`}
+              className="flex items-center gap-4 p-4 bg-[#0a0a0a] border border-white/5 rounded-2xl hover:border-white/10 transition-all duration-300 group"
+            >
+              <div className="p-3 rounded-lg bg-white/5 text-primary group-hover:bg-white/10 transition-colors">
+                <Mail size={20} />
+              </div>
+              <div>
+                <p className="text-xs text-neutral-500">Email</p>
+                <p className="text-sm text-neutral-300 font-medium">{email}</p>
+              </div>
+            </a>
 
-            <div className="space-y-4">
-              <a
-                href={`mailto:${email}`}
-                className="flex items-center gap-4 p-4 bg-card border border-border rounded-xl hover:border-primary/50 transition-colors group"
-              >
-                <div className="p-3 rounded-lg bg-primary/10 text-primary group-hover:bg-primary/20 transition-colors">
-                  <Mail size={20} />
-                </div>
-                <div>
-                  <p className="text-sm text-muted">Email</p>
-                  <p className="text-card-foreground font-medium">{email}</p>
-                </div>
-              </a>
+            <a
+              href={linkedIn}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-4 p-4 bg-[#0a0a0a] border border-white/5 rounded-2xl hover:border-white/10 transition-all duration-300 group"
+            >
+              <div className="p-3 rounded-lg bg-white/5 text-primary group-hover:bg-white/10 transition-colors">
+                <Link size={20} />
+              </div>
+              <div>
+                <p className="text-xs text-neutral-500">LinkedIn</p>
+                <p className="text-sm text-neutral-300 font-medium">
+                  Md Shayokh Mondol
+                </p>
+              </div>
+            </a>
 
-              <a
-                href={linkedIn}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-4 p-4 bg-card border border-border rounded-xl hover:border-primary/50 transition-colors group"
-              >
-                <div className="p-3 rounded-lg bg-primary/10 text-primary group-hover:bg-primary/20 transition-colors">
-                  <Link size={20} />
-                </div>
-                <div>
-                  <p className="text-sm text-muted">LinkedIn</p>
-                  <p className="text-card-foreground font-medium">
-                    Md Shayokh Mondol
-                  </p>
-                </div>
-              </a>
-
-              <a
-                href="https://wa.me/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-4 p-4 bg-card border border-border rounded-xl hover:border-primary/50 transition-colors group"
-              >
-                <div className="p-3 rounded-lg bg-primary/10 text-primary group-hover:bg-primary/20 transition-colors">
-                  <MessageCircle size={20} />
-                </div>
-                <div>
-                  <p className="text-sm text-muted">WhatsApp</p>
-                  <p className="text-card-foreground font-medium">
-                    Message me on WhatsApp
-                  </p>
-                </div>
-              </a>
-            </div>
+            <a
+              href="https://wa.me/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-4 p-4 bg-[#0a0a0a] border border-white/5 rounded-2xl hover:border-white/10 transition-all duration-300 group"
+            >
+              <div className="p-3 rounded-lg bg-white/5 text-primary group-hover:bg-white/10 transition-colors">
+                <MessageCircle size={20} />
+              </div>
+              <div>
+                <p className="text-xs text-neutral-500">WhatsApp</p>
+                <p className="text-sm text-neutral-300 font-medium">
+                  Message me
+                </p>
+              </div>
+            </a>
           </div>
 
           {/* Right - Contact Form */}
-          <div>
+          <div className="flex-1 w-full">
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid sm:grid-cols-2 gap-4">
-                <div>
-                  <label
-                    htmlFor="name"
-                    className="block text-sm font-medium text-card-foreground mb-1"
-                  >
-                    Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 bg-card border border-border rounded-xl text-foreground placeholder:text-muted focus:outline-none focus:border-primary transition-colors"
-                    placeholder="Your name"
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-sm font-medium text-card-foreground mb-1"
-                  >
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 bg-card border border-border rounded-xl text-foreground placeholder:text-muted focus:outline-none focus:border-primary transition-colors"
-                    placeholder="your@email.com"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label
-                  htmlFor="subject"
-                  className="block text-sm font-medium text-card-foreground mb-1"
-                >
-                  Subject
-                </label>
                 <input
                   type="text"
-                  id="subject"
-                  name="subject"
-                  value={formData.subject}
+                  name="name"
+                  value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-card border border-border rounded-xl text-foreground placeholder:text-muted focus:outline-none focus:border-primary transition-colors"
-                  placeholder="Message subject"
+                  className="w-full px-4 py-3 bg-[#0a0a0a] border border-white/5 rounded-xl text-white placeholder:text-neutral-600 focus:outline-none focus:border-white/20 transition-colors text-sm"
+                  placeholder="Your name"
+                />
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-4 py-3 bg-[#0a0a0a] border border-white/5 rounded-xl text-white placeholder:text-neutral-600 focus:outline-none focus:border-white/20 transition-colors text-sm"
+                  placeholder="your@email.com"
                 />
               </div>
 
-              <div>
-                <label
-                  htmlFor="message"
-                  className="block text-sm font-medium text-card-foreground mb-1"
-                >
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  rows={5}
-                  className="w-full px-4 py-3 bg-card border border-border rounded-xl text-foreground placeholder:text-muted focus:outline-none focus:border-primary transition-colors resize-none"
-                  placeholder="Your message..."
-                />
-              </div>
+              <input
+                type="text"
+                name="subject"
+                value={formData.subject}
+                onChange={handleChange}
+                required
+                className="w-full px-4 py-3 bg-[#0a0a0a] border border-white/5 rounded-xl text-white placeholder:text-neutral-600 focus:outline-none focus:border-white/20 transition-colors text-sm"
+                placeholder="Subject"
+              />
+
+              <textarea
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                required
+                rows={4}
+                className="w-full px-4 py-3 bg-[#0a0a0a] border border-white/5 rounded-xl text-white placeholder:text-neutral-600 focus:outline-none focus:border-white/20 transition-colors text-sm resize-none"
+                placeholder="Your message..."
+              />
 
               <button
                 type="submit"
                 disabled={status === "loading"}
-                className={cn(
-                  "w-full flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-medium transition-all duration-300",
-                  "bg-primary text-white hover:bg-primary/90",
-                  "disabled:opacity-50 disabled:cursor-not-allowed"
-                )}
+                className="flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-medium bg-white text-black hover:bg-neutral-200 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed text-sm"
               >
                 {status === "loading" ? (
                   <>
-                    <Loader2 size={18} className="animate-spin" />
+                    <Loader2 size={16} className="animate-spin" />
                     Sending...
                   </>
                 ) : (
                   <>
-                    <Send size={18} />
+                    <Send size={16} />
                     Send Message
                   </>
                 )}
               </button>
 
               {status === "success" && (
-                <div className="flex items-center gap-2 p-3 rounded-xl bg-green-500/10 text-green-500 text-sm">
-                  <CheckCircle size={18} />
+                <div className="flex items-center gap-2 p-3 rounded-xl bg-green-500/10 text-green-400 text-sm">
+                  <CheckCircle size={16} />
                   {responseMessage}
                 </div>
               )}
 
               {status === "error" && (
-                <div className="flex items-center gap-2 p-3 rounded-xl bg-red-500/10 text-red-500 text-sm">
+                <div className="flex items-center gap-2 p-3 rounded-xl bg-red-500/10 text-red-400 text-sm">
                   {responseMessage}
                 </div>
               )}

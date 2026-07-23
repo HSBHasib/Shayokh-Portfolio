@@ -12,7 +12,6 @@ import {
   Users,
   BookOpen,
 } from "lucide-react";
-import { cn } from "@/lib/utils";
 
 interface SkillsProps {
   skills: string[];
@@ -38,34 +37,32 @@ const skillIcons: Record<string, React.ElementType> = {
 export default function Skills({ skills }: SkillsProps) {
   return (
     <section id="skills" className="py-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Skills & Expertise
+      <div className="max-w-5xl mx-auto px-4">
+        {/* Section Header */}
+        <div className="space-y-1 mb-10">
+          <h2 className="bg-gradient-to-b from-white to-neutral-400 bg-clip-text text-2xl md:text-4xl font-bold text-transparent">
+            Skills
           </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto" />
+          <p className="text-neutral-500 text-sm font-medium italic">
+            My Technical Level
+          </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        {/* Skills Grid */}
+        <div className="flex flex-wrap gap-4 justify-center mt-10">
           {skills.map((skill) => {
             const Icon = skillIcons[skill] || Cpu;
             return (
               <div
                 key={skill}
-                className={cn(
-                  "group relative p-4 rounded-xl bg-card border border-border",
-                  "hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10",
-                  "transition-all duration-300 cursor-default"
-                )}
+                className="flex items-center gap-3 px-4 py-3 bg-[#0a0a0a] rounded-2xl border border-white/5 hover:border-white/10 transition-all duration-300 group"
               >
-                <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-primary/10 text-primary group-hover:bg-primary/20 transition-colors">
-                    <Icon size={20} />
-                  </div>
-                  <span className="text-sm font-medium text-card-foreground">
-                    {skill}
-                  </span>
+                <div className="p-2 rounded-lg bg-white/5 text-primary group-hover:bg-white/10 transition-colors">
+                  <Icon size={18} />
                 </div>
+                <span className="text-sm font-medium text-neutral-300">
+                  {skill}
+                </span>
               </div>
             );
           })}

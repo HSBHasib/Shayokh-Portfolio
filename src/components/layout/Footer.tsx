@@ -26,28 +26,31 @@ const navLinks = [
 
 export default function Footer({ socials, name }: FooterProps) {
   return (
-    <footer className="bg-card border-t border-border">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid md:grid-cols-3 gap-8">
+    <footer className="mt-10 border-t border-neutral-800">
+      <div className="px-6 py-16 md:pt-12 pb-8 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-6 gap-12">
           {/* Brand */}
-          <div>
-            <h3 className="text-xl font-bold text-foreground mb-2">{name}</h3>
-            <p className="text-sm text-muted">
-              Energy & Electrical Engineering Researcher
+          <div className="md:col-span-4">
+            <h2 className="text-xl font-bold tracking-tighter mb-2 bg-gradient-to-b from-white to-neutral-400 bg-clip-text text-transparent">
+              {name}
+            </h2>
+            <p className="text-sm leading-relaxed font-medium max-w-[45%] text-neutral-400">
+              Energy & Electrical Engineering Researcher specializing in Power
+              Electronics, Cryogenic Energy Storage, and Smart Grids.
             </p>
           </div>
 
           {/* Quick Links */}
-          <div>
-            <h4 className="text-sm font-semibold text-foreground mb-4">
+          <div className="col-span-1">
+            <h3 className="text-[16px] font-bold uppercase mb-3 bg-gradient-to-b from-white to-neutral-400 bg-clip-text text-transparent">
               Quick Links
-            </h4>
-            <ul className="space-y-2">
+            </h3>
+            <ul className="space-y-2 text-sm font-medium text-neutral-400">
               {navLinks.map((link) => (
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    className="text-sm text-muted hover:text-primary transition-colors"
+                    className="hover:text-white hover:underline transition-colors"
                   >
                     {link.label}
                   </a>
@@ -56,11 +59,11 @@ export default function Footer({ socials, name }: FooterProps) {
             </ul>
           </div>
 
-          {/* Social Links */}
-          <div>
-            <h4 className="text-sm font-semibold text-foreground mb-4">
+          {/* Connect */}
+          <div className="col-span-1">
+            <h3 className="text-[16px] font-bold uppercase mb-3 bg-gradient-to-b from-white to-neutral-400 bg-clip-text text-transparent">
               Connect
-            </h4>
+            </h3>
             <div className="flex flex-wrap gap-3">
               {socialConfig.map(({ key, label }) => (
                 <a
@@ -68,7 +71,7 @@ export default function Footer({ socials, name }: FooterProps) {
                   href={socials[key]}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group relative px-3 py-2 text-sm text-muted bg-background/50 rounded-lg border border-border hover:border-primary/50 hover:text-primary transition-all duration-300"
+                  className="text-xs text-neutral-500 hover:text-white transition-colors"
                 >
                   {label}
                 </a>
@@ -78,16 +81,11 @@ export default function Footer({ socials, name }: FooterProps) {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-border">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-sm text-muted">
-              &copy; {new Date().getFullYear()} {name}. All rights reserved.
-            </p>
-            <p className="flex items-center gap-1 text-sm text-muted">
-              Built with <Heart size={14} className="text-primary" /> using
-              Next.js
-            </p>
-          </div>
+        <div className="mt-10 pt-6 border-t border-neutral-800">
+          <p className="flex justify-center items-center gap-1.5 text-[10px] uppercase tracking-widest text-neutral-500">
+            <Heart size={12} className="text-primary" />
+            {new Date().getFullYear()} {name}. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>

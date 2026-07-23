@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
-import { Calendar, BookOpen, ChevronRight } from "lucide-react";
+import { Calendar, BookOpen, ChevronRight, ExternalLink } from "lucide-react";
 import ResearchModal from "@/components/ui/ResearchModal";
 import { Research as ResearchType } from "@/types";
 
@@ -16,33 +16,34 @@ export default function Research({ researches }: ResearchProps) {
   );
 
   return (
-    <section id="research" className="py-20 bg-card/50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Research Publications
+    <section id="research" className="py-20 px-4">
+      <div className="max-w-5xl mx-auto">
+        {/* Section Header */}
+        <div className="space-y-1 mb-10 text-center">
+          <h2 className="bg-gradient-to-b from-white to-neutral-400 bg-clip-text text-2xl md:text-4xl font-bold text-transparent">
+            Research
           </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto" />
-          <p className="mt-4 text-muted max-w-2xl mx-auto">
-            Published papers in power electronics, optical communications, and cryogenic energy storage
+          <p className="text-neutral-500 text-sm font-medium italic">
+            Published Papers
           </p>
         </div>
 
+        {/* Research Cards */}
         <div className="grid md:grid-cols-2 gap-6">
           {researches.map((research) => (
             <div
               key={research.id}
-              className="group relative bg-card border border-border rounded-xl p-6 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 transition-all duration-300 cursor-pointer"
+              className="group relative bg-[#0a0a0a] border border-white/5 rounded-2xl p-6 hover:border-white/10 transition-all duration-300 cursor-pointer"
               onClick={() => setSelectedResearch(research)}
             >
               <div className="flex items-start justify-between gap-4">
                 <div className="flex-1 min-w-0">
-                  <h3 className="text-lg font-semibold text-foreground mb-2 line-clamp-2 group-hover:text-primary transition-colors">
+                  <h3 className="text-lg font-semibold text-white mb-2 line-clamp-2 group-hover:text-primary transition-colors">
                     {research.title}
                   </h3>
                   <p className="text-sm text-primary mb-3">{research.journal}</p>
 
-                  <div className="flex flex-wrap items-center gap-4 text-xs text-muted">
+                  <div className="flex flex-wrap items-center gap-4 text-xs text-neutral-500">
                     <span className="flex items-center gap-1">
                       <Calendar size={14} />
                       {research.publicationDate}
@@ -62,13 +63,13 @@ export default function Research({ researches }: ResearchProps) {
                     {research.keywords.slice(0, 3).map((keyword) => (
                       <span
                         key={keyword}
-                        className="px-2 py-1 text-xs rounded-full bg-primary/10 text-primary"
+                        className="px-2 py-1 text-xs rounded-full bg-white/5 text-neutral-400"
                       >
                         {keyword}
                       </span>
                     ))}
                     {research.keywords.length > 3 && (
-                      <span className="px-2 py-1 text-xs rounded-full bg-border text-muted">
+                      <span className="px-2 py-1 text-xs rounded-full bg-white/5 text-neutral-500">
                         +{research.keywords.length - 3}
                       </span>
                     )}
@@ -77,7 +78,7 @@ export default function Research({ researches }: ResearchProps) {
 
                 <ChevronRight
                   size={20}
-                  className="text-muted group-hover:text-primary group-hover:translate-x-1 transition-all flex-shrink-0 mt-1"
+                  className="text-neutral-600 group-hover:text-primary group-hover:translate-x-1 transition-all flex-shrink-0 mt-1"
                 />
               </div>
             </div>

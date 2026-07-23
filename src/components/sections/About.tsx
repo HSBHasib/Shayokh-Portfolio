@@ -1,6 +1,6 @@
 "use client";
 
-import { GraduationCap, MapPin, Calendar } from "lucide-react";
+import { GraduationCap, MapPin, Calendar, BookOpen } from "lucide-react";
 
 interface AboutProps {
   name: string;
@@ -18,28 +18,31 @@ export default function About({
   profilePic,
 }: AboutProps) {
   return (
-    <section id="about" className="py-20 bg-card/50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            About Me
+    <section id="about" className="relative py-20 px-6 md:px-0">
+      <div className="max-w-5xl mx-auto">
+        {/* Section Header */}
+        <div className="space-y-2 text-center mb-12">
+          <h2 className="bg-gradient-to-b from-white to-neutral-400 bg-clip-text text-3xl md:text-4xl font-bold text-transparent">
+            About
           </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto" />
+          <p className="text-neutral-500 text-sm font-medium italic">
+            My Introduction
+          </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-10 mt-12">
           {/* Left - Image */}
-          <div className="flex justify-center">
-            <div className="relative">
-              <div className="absolute -inset-2 bg-gradient-to-r from-primary/30 to-secondary/30 rounded-2xl blur-lg" />
-              <div className="relative rounded-2xl overflow-hidden bg-card border border-border">
+          <div className="w-full md:flex-1 max-w-[350px] md:max-w-[400px] aspect-square">
+            <div className="relative group">
+              <div className="absolute -inset-4 bg-primary/20 blur-3xl rounded-2xl opacity-50 group-hover:opacity-80 transition duration-1000" />
+              <div className="relative rounded-2xl overflow-hidden border border-white/5 bg-neutral-900">
                 <img
                   src={profilePic}
                   alt={name}
-                  className="w-full max-w-md h-auto"
+                  className="w-full h-full object-cover"
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
-                    target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&size=400&background=0b0f17&color=f08787`;
+                    target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&size=400&background=0a0a0a&color=f08787`;
                   }}
                 />
               </div>
@@ -47,26 +50,49 @@ export default function About({
           </div>
 
           {/* Right - Content */}
-          <div className="space-y-6">
-            <h3 className="text-2xl font-semibold text-foreground">
-              Electrical Engineering Researcher at{" "}
-              <span className="text-primary">NUIST</span>
-            </h3>
+          <div className="w-full md:flex-1 flex flex-col gap-8">
+            {/* Stats Cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div className="bg-[#0a0a0a] rounded-2xl border border-white/5 p-4 text-center">
+                <div className="text-2xl font-bold text-primary mb-1">4+</div>
+                <div className="text-xs text-neutral-500">Publications</div>
+              </div>
+              <div className="bg-[#0a0a0a] rounded-2xl border border-white/5 p-4 text-center">
+                <div className="text-2xl font-bold text-primary mb-1">50+</div>
+                <div className="text-xs text-neutral-500">Citations</div>
+              </div>
+              <div className="bg-[#0a0a0a] rounded-2xl border border-white/5 p-4 text-center">
+                <div className="text-2xl font-bold text-primary mb-1">14</div>
+                <div className="text-xs text-neutral-500">Skills</div>
+              </div>
+            </div>
 
-            <p className="text-card-foreground/80 leading-relaxed">{bio}</p>
-
+            {/* Bio */}
             <div className="space-y-4">
-              <div className="flex items-center gap-3 text-card-foreground/70">
-                <GraduationCap className="text-primary flex-shrink-0" size={20} />
-                <span>{degree}</span>
+              <p className="text-neutral-400 leading-relaxed">
+                {bio}
+              </p>
+            </div>
+
+            {/* Info Items */}
+            <div className="space-y-3">
+              <div className="flex items-center gap-3 text-neutral-400">
+                <div className="p-2 rounded-lg bg-white/5 text-primary">
+                  <GraduationCap size={18} />
+                </div>
+                <span className="text-sm">{degree}</span>
               </div>
-              <div className="flex items-center gap-3 text-card-foreground/70">
-                <MapPin className="text-primary flex-shrink-0" size={20} />
-                <span>{institution}</span>
+              <div className="flex items-center gap-3 text-neutral-400">
+                <div className="p-2 rounded-lg bg-white/5 text-primary">
+                  <MapPin size={18} />
+                </div>
+                <span className="text-sm">{institution}</span>
               </div>
-              <div className="flex items-center gap-3 text-card-foreground/70">
-                <Calendar className="text-primary flex-shrink-0" size={20} />
-                <span>2021 – 2025</span>
+              <div className="flex items-center gap-3 text-neutral-400">
+                <div className="p-2 rounded-lg bg-white/5 text-primary">
+                  <Calendar size={18} />
+                </div>
+                <span className="text-sm">2021 – 2025</span>
               </div>
             </div>
           </div>
