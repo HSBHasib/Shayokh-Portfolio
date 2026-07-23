@@ -19,7 +19,7 @@ export default function About({
   profilePic,
 }: AboutProps) {
   return (
-    <section id="about" className="py-24 px-6">
+    <section id="about" className="pb-24 px-6">
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground">
@@ -27,6 +27,9 @@ export default function About({
           </h2>
           <p className="text-muted text-sm font-medium italic mt-2">
             My Introduction
+          </p>
+          <p className="text-muted/70 text-sm mt-3 max-w-xl mx-auto">
+            Academic background and professional journey in electrical engineering research.
           </p>
         </div>
 
@@ -45,14 +48,10 @@ export default function About({
           </div>
 
           <div className="w-full md:flex-1 flex flex-col gap-10">
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <div className="bg-card rounded-2xl border border-border p-5 text-center shadow-sm">
                 <div className="text-3xl font-bold text-primary mb-1">4+</div>
                 <div className="text-xs text-muted">Publications</div>
-              </div>
-              <div className="bg-card rounded-2xl border border-border p-5 text-center shadow-sm">
-                <div className="text-3xl font-bold text-primary mb-1">50+</div>
-                <div className="text-xs text-muted">Citations</div>
               </div>
               <div className="bg-card rounded-2xl border border-border p-5 text-center shadow-sm">
                 <div className="text-3xl font-bold text-primary mb-1">14</div>

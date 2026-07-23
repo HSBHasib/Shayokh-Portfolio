@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Mail, Send, Loader2, CheckCircle } from "lucide-react";
+import { Mail, Send, Loader2 } from "lucide-react";
+import toast from "react-hot-toast";
 
 interface ContactProps {
   email: string;
@@ -15,11 +16,6 @@ interface ContactFormData {
   message: string;
 }
 
-interface ContactResponse {
-  success: boolean;
-  message: string;
-}
-
 export default function Contact({ email, linkedIn }: ContactProps) {
   const [formData, setFormData] = useState<ContactFormData>({
     name: "",
@@ -27,30 +23,31 @@ export default function Contact({ email, linkedIn }: ContactProps) {
     subject: "",
     message: "",
   });
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
-  const [responseMessage, setResponseMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setStatus("loading");
+    setLoading(true);
+
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
-      const data: ContactResponse = await res.json();
+
+      const data = await res.json();
+
       if (data.success) {
-        setStatus("success");
-        setResponseMessage(data.message);
+        toast.success("Message sent successfully! Check your email for confirmation.");
         setFormData({ name: "", email: "", subject: "", message: "" });
       } else {
-        setStatus("error");
-        setResponseMessage(data.message);
+        toast.error(data.message || "Failed to send message");
       }
     } catch {
-      setStatus("error");
-      setResponseMessage("Failed to send message. Please try again.");
+      toast.error("Failed to send message. Please try again.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -67,6 +64,9 @@ export default function Contact({ email, linkedIn }: ContactProps) {
           </h2>
           <p className="text-muted text-sm font-medium italic mt-2">
             Contact Me
+          </p>
+          <p className="text-muted/70 text-sm mt-3 max-w-xl mx-auto">
+            Feel free to reach out for collaborations, research opportunities, or academic inquiries.
           </p>
         </div>
 
@@ -165,10 +165,10 @@ export default function Contact({ email, linkedIn }: ContactProps) {
 
               <button
                 type="submit"
-                disabled={status === "loading"}
-                className="flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-medium bg-gradient-to-r from-primary to-secondary text-white hover:opacity-90 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed text-sm w-full sm:w-auto"
+                disabled={loading}
+                className="flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-medium bg-gradient-to-r from-[#EA8478] to-[#e8786b] text-white hover:opacity-90 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed text-sm w-full sm:w-auto"
               >
-                {status === "loading" ? (
+                {loading ? (
                   <>
                     <Loader2 size={16} className="animate-spin" />
                     Sending...
@@ -180,19 +180,6 @@ export default function Contact({ email, linkedIn }: ContactProps) {
                   </>
                 )}
               </button>
-
-              {status === "success" && (
-                <div className="flex items-center gap-2 p-4 rounded-xl bg-green-50 text-green-600 text-sm border border-green-200">
-                  <CheckCircle size={16} />
-                  {responseMessage}
-                </div>
-              )}
-
-              {status === "error" && (
-                <div className="flex items-center gap-2 p-4 rounded-xl bg-red-50 text-red-600 text-sm border border-red-200">
-                  {responseMessage}
-                </div>
-              )}
             </form>
           </div>
         </div>

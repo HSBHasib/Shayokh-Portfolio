@@ -54,20 +54,23 @@ export default function Research({ researches }: ResearchProps) {
   };
 
   return (
-    <section id="research" className="py-24 px-6">
+    <section id="research" className="pb-24 px-6">
       <div className="max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-foreground">
             Research
           </h2>
           <p className="text-muted text-sm font-medium italic mt-2">
             Published Papers
+          </p>
+          <p className="text-muted/70 text-sm mt-3 max-w-xl mx-auto">
+            Research contributions in power electronics, optical communications, and energy storage systems.
           </p>
         </motion.div>
 
@@ -134,7 +137,7 @@ export default function Research({ researches }: ResearchProps) {
                         href={research.pdfUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex-1 px-4 py-2.5 text-sm font-medium rounded-xl bg-foreground text-background hover:opacity-90 transition-colors flex items-center justify-center gap-2"
+                        className="flex-1 px-4 py-2.5 text-sm font-medium rounded-xl bg-gradient-to-r from-[#EA8478] to-[#e8786b] text-white hover:opacity-90 transition-colors flex items-center justify-center gap-2"
                         onClick={(e) => e.stopPropagation()}
                       >
                         <FileText size={14} />
@@ -157,7 +160,7 @@ export default function Research({ researches }: ResearchProps) {
         </div>
 
         {totalPages > 1 && (
-          <div className="flex items-center justify-center gap-4 mt-12">
+          <div className="flex items-center justify-center gap-4">
             <button
               onClick={goPrev}
               disabled={currentPage === 0}
