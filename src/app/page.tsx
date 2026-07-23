@@ -2,6 +2,10 @@ import Hero from "@/components/sections/Hero";
 import About from "@/components/sections/About";
 import Skills from "@/components/sections/Skills";
 import Research from "@/components/sections/Research";
+import Education from "@/components/sections/Education";
+import Contact from "@/components/sections/Contact";
+import Footer from "@/components/layout/Footer";
+import ScrollToTop from "@/components/ui/ScrollToTop";
 import { portfolioData } from "@/data/portfolioData";
 
 export default function Home() {
@@ -28,6 +32,17 @@ export default function Home() {
       <Skills skills={skills} />
 
       <Research researches={researches} />
+
+      <Education />
+
+      <Contact
+        email={personalInfo.socials.researchGate ? "hasibhsb19@gmail.com" : "hasibhsb19@gmail.com"}
+        linkedIn={personalInfo.socials.linkedIn}
+      />
+
+      <Footer socials={personalInfo.socials} name={personalInfo.name} />
+
+      <ScrollToTop />
     </>
   );
 }

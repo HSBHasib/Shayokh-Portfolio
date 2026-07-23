@@ -15,7 +15,12 @@ const navLinks = [
   { label: "Contact", href: "#contact" },
 ];
 
-export default function Navbar() {
+interface NavbarProps {
+  logoUrl?: string;
+  name?: string;
+}
+
+export default function Navbar({ logoUrl, name }: NavbarProps) {
   const { theme, toggleTheme } = useTheme();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -40,10 +45,29 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Logo Placeholder */}
-          <div className="flex-shrink-0">
-            <span className="text-xl font-bold text-primary">SM</span>
-          </div>
+          {/* Logo */}
+          <a href="#home" className="flex-shrink-0">
+            {logoUrl ? (
+              <img
+                src={logoUrl}
+                alt={name || "Logo"}
+                className="h-8 w-auto"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.style.display = "none";
+                  target.nextElementSibling?.classList.remove("hidden");
+                }}
+              />
+            ) : null}
+            <span
+              className={cn(
+                "text-xl font-bold text-primary",
+                logoUrl ? "hidden" : ""
+              )}
+            >
+              {name?.split(" ").map((n) => n[0]).join("") || "SM"}
+            </span>
+          </a>
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-1">
