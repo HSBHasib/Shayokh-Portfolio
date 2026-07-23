@@ -70,10 +70,10 @@ export default function Contact({ email, linkedIn }: ContactProps) {
       <div className="max-w-3xl mx-auto">
         {/* Section Header */}
         <div className="space-y-2 text-center mb-12">
-          <h2 className="bg-gradient-to-b from-white to-neutral-400 bg-clip-text text-3xl md:text-4xl font-bold text-transparent">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground">
             Get in Touch
           </h2>
-          <p className="text-neutral-500 text-sm font-medium italic">
+          <p className="text-muted text-sm font-medium italic">
             Contact Me
           </p>
         </div>
@@ -83,14 +83,14 @@ export default function Contact({ email, linkedIn }: ContactProps) {
           <div className="w-full md:w-[35%] space-y-4">
             <a
               href={`mailto:${email}`}
-              className="flex items-center gap-4 p-4 bg-[#0a0a0a] border border-white/5 rounded-2xl hover:border-white/10 transition-all duration-300 group"
+              className="flex items-center gap-4 p-4 bg-card border border-border rounded-2xl hover:shadow-md transition-all duration-300 group"
             >
-              <div className="p-3 rounded-lg bg-white/5 text-primary group-hover:bg-white/10 transition-colors">
+              <div className="p-3 rounded-lg bg-primary/10 text-primary group-hover:bg-primary/20 transition-colors">
                 <Mail size={20} />
               </div>
               <div>
-                <p className="text-xs text-neutral-500">Email</p>
-                <p className="text-sm text-neutral-300 font-medium">{email}</p>
+                <p className="text-xs text-muted">Email</p>
+                <p className="text-sm text-foreground font-medium">{email}</p>
               </div>
             </a>
 
@@ -98,14 +98,14 @@ export default function Contact({ email, linkedIn }: ContactProps) {
               href={linkedIn}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-4 p-4 bg-[#0a0a0a] border border-white/5 rounded-2xl hover:border-white/10 transition-all duration-300 group"
+              className="flex items-center gap-4 p-4 bg-card border border-border rounded-2xl hover:shadow-md transition-all duration-300 group"
             >
-              <div className="p-3 rounded-lg bg-white/5 text-primary group-hover:bg-white/10 transition-colors">
+              <div className="p-3 rounded-lg bg-primary/10 text-primary group-hover:bg-primary/20 transition-colors">
                 <Link size={20} />
               </div>
               <div>
-                <p className="text-xs text-neutral-500">LinkedIn</p>
-                <p className="text-sm text-neutral-300 font-medium">
+                <p className="text-xs text-muted">LinkedIn</p>
+                <p className="text-sm text-foreground font-medium">
                   Md Shayokh Mondol
                 </p>
               </div>
@@ -115,14 +115,14 @@ export default function Contact({ email, linkedIn }: ContactProps) {
               href="https://wa.me/"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-4 p-4 bg-[#0a0a0a] border border-white/5 rounded-2xl hover:border-white/10 transition-all duration-300 group"
+              className="flex items-center gap-4 p-4 bg-card border border-border rounded-2xl hover:shadow-md transition-all duration-300 group"
             >
-              <div className="p-3 rounded-lg bg-white/5 text-primary group-hover:bg-white/10 transition-colors">
+              <div className="p-3 rounded-lg bg-primary/10 text-primary group-hover:bg-primary/20 transition-colors">
                 <MessageCircle size={20} />
               </div>
               <div>
-                <p className="text-xs text-neutral-500">WhatsApp</p>
-                <p className="text-sm text-neutral-300 font-medium">
+                <p className="text-xs text-muted">WhatsApp</p>
+                <p className="text-sm text-foreground font-medium">
                   Message me
                 </p>
               </div>
@@ -139,7 +139,7 @@ export default function Contact({ email, linkedIn }: ContactProps) {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-[#0a0a0a] border border-white/5 rounded-xl text-white placeholder:text-neutral-600 focus:outline-none focus:border-white/20 transition-colors text-sm"
+                  className="w-full px-4 py-3 bg-card border border-border rounded-xl text-foreground placeholder:text-muted focus:outline-none focus:border-primary transition-colors text-sm"
                   placeholder="Your name"
                 />
                 <input
@@ -148,7 +148,7 @@ export default function Contact({ email, linkedIn }: ContactProps) {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-[#0a0a0a] border border-white/5 rounded-xl text-white placeholder:text-neutral-600 focus:outline-none focus:border-white/20 transition-colors text-sm"
+                  className="w-full px-4 py-3 bg-card border border-border rounded-xl text-foreground placeholder:text-muted focus:outline-none focus:border-primary transition-colors text-sm"
                   placeholder="your@email.com"
                 />
               </div>
@@ -159,7 +159,7 @@ export default function Contact({ email, linkedIn }: ContactProps) {
                 value={formData.subject}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3 bg-[#0a0a0a] border border-white/5 rounded-xl text-white placeholder:text-neutral-600 focus:outline-none focus:border-white/20 transition-colors text-sm"
+                className="w-full px-4 py-3 bg-card border border-border rounded-xl text-foreground placeholder:text-muted focus:outline-none focus:border-primary transition-colors text-sm"
                 placeholder="Subject"
               />
 
@@ -169,14 +169,14 @@ export default function Contact({ email, linkedIn }: ContactProps) {
                 onChange={handleChange}
                 required
                 rows={4}
-                className="w-full px-4 py-3 bg-[#0a0a0a] border border-white/5 rounded-xl text-white placeholder:text-neutral-600 focus:outline-none focus:border-white/20 transition-colors text-sm resize-none"
+                className="w-full px-4 py-3 bg-card border border-border rounded-xl text-foreground placeholder:text-muted focus:outline-none focus:border-primary transition-colors text-sm resize-none"
                 placeholder="Your message..."
               />
 
               <button
                 type="submit"
                 disabled={status === "loading"}
-                className="flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-medium bg-white text-black hover:bg-neutral-200 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed text-sm"
+                className="flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-medium bg-primary text-white hover:bg-primary/90 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed text-sm"
               >
                 {status === "loading" ? (
                   <>
@@ -192,14 +192,14 @@ export default function Contact({ email, linkedIn }: ContactProps) {
               </button>
 
               {status === "success" && (
-                <div className="flex items-center gap-2 p-3 rounded-xl bg-green-500/10 text-green-400 text-sm">
+                <div className="flex items-center gap-2 p-3 rounded-xl bg-green-50 text-green-600 text-sm border border-green-200">
                   <CheckCircle size={16} />
                   {responseMessage}
                 </div>
               )}
 
               {status === "error" && (
-                <div className="flex items-center gap-2 p-3 rounded-xl bg-red-500/10 text-red-400 text-sm">
+                <div className="flex items-center gap-2 p-3 rounded-xl bg-red-50 text-red-600 text-sm border border-red-200">
                   {responseMessage}
                 </div>
               )}

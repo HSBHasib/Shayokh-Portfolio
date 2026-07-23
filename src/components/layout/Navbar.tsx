@@ -66,9 +66,9 @@ export default function Navbar({ logoUrl, name }: NavbarProps) {
             )}
           </a>
 
-          {/* Center - Navigation (Glass style) */}
+          {/* Center - Navigation */}
           <div className="hidden md:block">
-            <nav className="flex items-center gap-2 rounded-full border border-white/10 bg-black/60 backdrop-blur-lg px-4 py-2">
+            <nav className="flex items-center gap-2 rounded-full border border-border bg-card/80 backdrop-blur-md px-4 py-2 shadow-sm">
               {navLinks.map((link) => {
                 const sectionId = link.href.replace("#", "");
                 const isActive = activeSection === sectionId;
@@ -77,10 +77,10 @@ export default function Navbar({ logoUrl, name }: NavbarProps) {
                     key={link.href}
                     href={link.href}
                     className={cn(
-                      "px-3 py-1 text-sm font-medium transition-colors",
+                      "px-3 py-1 text-sm font-medium transition-colors rounded-full",
                       isActive
-                        ? "text-white bg-white/10 rounded-full"
-                        : "text-neutral-400 hover:text-white"
+                        ? "text-primary bg-primary/10"
+                        : "text-muted hover:text-foreground"
                     )}
                   >
                     {link.label}
@@ -94,7 +94,7 @@ export default function Navbar({ logoUrl, name }: NavbarProps) {
           <div className="flex items-center gap-3">
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-full border border-white/10 bg-black/60 backdrop-blur-lg text-neutral-300 hover:text-white hover:bg-white/20 transition-all duration-300"
+              className="p-2 rounded-full border border-border bg-card text-muted hover:text-foreground hover:bg-card/80 transition-all duration-300"
               aria-label="Toggle theme"
             >
               {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
@@ -103,7 +103,7 @@ export default function Navbar({ logoUrl, name }: NavbarProps) {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="md:hidden p-2 rounded-full border border-white/10 bg-black/60 backdrop-blur-lg text-neutral-300 hover:text-white hover:bg-white/20 transition-all duration-300"
+              className="md:hidden p-2 rounded-full border border-border bg-card text-muted hover:text-foreground hover:bg-card/80 transition-all duration-300"
               aria-label="Toggle menu"
             >
               {mobileOpen ? <X size={18} /> : <Menu size={18} />}
@@ -114,7 +114,7 @@ export default function Navbar({ logoUrl, name }: NavbarProps) {
 
       {/* Mobile Menu */}
       {mobileOpen && (
-        <div className="md:hidden mt-2 mx-4 bg-black/90 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden">
+        <div className="md:hidden mt-2 mx-4 bg-card border border-border rounded-2xl shadow-lg overflow-hidden">
           <nav className="flex flex-col p-4 gap-1">
             {navLinks.map((link) => {
               const sectionId = link.href.replace("#", "");
@@ -127,8 +127,8 @@ export default function Navbar({ logoUrl, name }: NavbarProps) {
                   className={cn(
                     "px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200",
                     isActive
-                      ? "text-white bg-white/10"
-                      : "text-neutral-300 hover:text-white hover:bg-white/10"
+                      ? "text-primary bg-primary/10"
+                      : "text-muted hover:text-foreground hover:bg-card"
                   )}
                 >
                   {link.label}

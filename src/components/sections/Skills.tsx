@@ -39,11 +39,11 @@ export default function Skills({ skills }: SkillsProps) {
     <section id="skills" className="py-20">
       <div className="max-w-5xl mx-auto px-4">
         {/* Section Header */}
-        <div className="space-y-1 mb-10">
-          <h2 className="bg-gradient-to-b from-white to-neutral-400 bg-clip-text text-2xl md:text-4xl font-bold text-transparent">
+        <div className="space-y-1 mb-10 text-center">
+          <h2 className="text-2xl md:text-4xl font-bold text-foreground">
             Skills
           </h2>
-          <p className="text-neutral-500 text-sm font-medium italic">
+          <p className="text-muted text-sm font-medium italic">
             My Technical Level
           </p>
         </div>
@@ -55,12 +55,12 @@ export default function Skills({ skills }: SkillsProps) {
             return (
               <div
                 key={skill}
-                className="flex items-center gap-3 px-4 py-3 bg-[#0a0a0a] rounded-2xl border border-white/5 hover:border-white/10 transition-all duration-300 group"
+                className="flex items-center gap-3 px-4 py-3 bg-card rounded-2xl border border-border shadow-sm hover:shadow-md transition-all duration-300 group"
               >
-                <div className="p-2 rounded-lg bg-white/5 text-primary group-hover:bg-white/10 transition-colors">
+                <div className="p-2 rounded-lg bg-primary/10 text-primary group-hover:bg-primary/20 transition-colors">
                   <Icon size={18} />
                 </div>
-                <span className="text-sm font-medium text-neutral-300">
+                <span className="text-sm font-medium text-foreground">
                   {skill}
                 </span>
               </div>
