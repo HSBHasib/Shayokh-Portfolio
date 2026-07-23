@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { Merriweather } from "next/font/google";
+import { Lora } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/providers/ThemeProvider";
 
-const merriweather = Merriweather({
-  variable: "--font-merriweather",
+const lora = Lora({
+  variable: "--font-lora",
   subsets: ["latin"],
-  weight: ["300", "400", "700", "900"],
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -21,7 +21,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={merriweather.variable} suppressHydrationWarning>
+    <html lang="en" className={lora.variable} suppressHydrationWarning>
       <body>
         <ThemeProvider>{children}</ThemeProvider>
       </body>

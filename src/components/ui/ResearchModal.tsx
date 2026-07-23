@@ -9,6 +9,7 @@ import {
   Users,
   Calendar,
   Hash,
+  Download,
 } from "lucide-react";
 import { Research } from "@/types";
 
@@ -157,6 +158,17 @@ export default function ResearchModal({ research, onClose }: ResearchModalProps)
               <ExternalLink size={16} />
               DOI Link
             </a>
+            {research.pdfUrl && (
+              <a
+                href={research.pdfUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-foreground text-background text-sm font-medium hover:opacity-90 transition-colors"
+              >
+                <Download size={16} />
+                View PDF
+              </a>
+            )}
             {research.googleScholarLink && (
               <a
                 href={research.googleScholarLink}
