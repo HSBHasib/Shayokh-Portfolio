@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { ExternalLink, Download } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -16,7 +15,7 @@ export default function Hero({ name, title, bio, cvUrl, profilePic }: HeroProps)
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
       {/* Spotlight Background */}
       <div className="absolute inset-0 overflow-hidden">
@@ -28,54 +27,24 @@ export default function Hero({ name, title, bio, cvUrl, profilePic }: HeroProps)
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left - Text Content */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="text-center lg:text-left"
-          >
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="text-primary font-medium mb-4"
-            >
+          <div className="text-center lg:text-left">
+            <p className="text-primary font-medium mb-4">
               Hello, I&apos;m
-            </motion.p>
+            </p>
 
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4 leading-tight"
-            >
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4 leading-tight">
               {name}
-            </motion.h1>
+            </h1>
 
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-              className="text-xl md:text-2xl text-muted mb-6"
-            >
+            <h2 className="text-xl md:text-2xl text-muted mb-6">
               {title}
-            </motion.h2>
+            </h2>
 
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
-              className="text-card-foreground/80 mb-8 max-w-lg mx-auto lg:mx-0"
-            >
+            <p className="text-card-foreground/80 mb-8 max-w-lg mx-auto lg:mx-0">
               {bio}
-            </motion.p>
+            </p>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
-              className="flex flex-wrap gap-4 justify-center lg:justify-start"
-            >
+            <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
               <a
                 href={cvUrl}
                 target="_blank"
@@ -105,16 +74,11 @@ export default function Hero({ name, title, bio, cvUrl, profilePic }: HeroProps)
                 View Research
                 <Download size={18} />
               </a>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
 
           {/* Right - Profile Picture */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
-            className="flex justify-center lg:justify-end"
-          >
+          <div className="flex justify-center lg:justify-end">
             <div className="relative">
               {/* Animated Border */}
               <div className="absolute -inset-1 bg-gradient-to-r from-primary via-secondary to-accent rounded-full animate-spin-slow" />
@@ -130,7 +94,7 @@ export default function Hero({ name, title, bio, cvUrl, profilePic }: HeroProps)
                 />
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { Moon, Sun, Menu, X } from "lucide-react";
 import { useTheme } from "@/providers/ThemeProvider";
 import { cn } from "@/lib/utils";
@@ -32,10 +31,7 @@ export default function Navbar({ logoUrl, name }: NavbarProps) {
   }, []);
 
   return (
-    <motion.header
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
+    <header
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         scrolled
@@ -115,32 +111,25 @@ export default function Navbar({ logoUrl, name }: NavbarProps) {
       </div>
 
       {/* Mobile Menu */}
-      <AnimatePresence>
-        {mobileOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-card/95 backdrop-blur-xl border-b border-border"
-          >
-            <nav className="flex flex-col p-4 gap-2">
-              {navLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setMobileOpen(false)}
-                  className={cn(
-                    "px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200",
-                    "text-card-foreground hover:text-primary hover:bg-primary/10"
-                  )}
-                >
-                  {link.label}
-                </a>
-              ))}
-            </nav>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.header>
+      {mobileOpen && (
+        <div className="md:hidden bg-card/95 backdrop-blur-xl border-b border-border">
+          <nav className="flex flex-col p-4 gap-2">
+            {navLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={() => setMobileOpen(false)}
+                className={cn(
+                  "px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200",
+                  "text-card-foreground hover:text-primary hover:bg-primary/10"
+                )}
+              >
+                {link.label}
+              </a>
+            ))}
+          </nav>
+        </div>
+      )}
+    </header>
   );
 }
