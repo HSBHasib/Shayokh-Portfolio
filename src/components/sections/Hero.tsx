@@ -12,7 +12,7 @@ interface HeroProps {
   profilePic: string;
 }
 
-const titles = ["BSC Graduate", "EEE", "Researcher", "Power Electronics"];
+const titles = ["BSC Graduate in EEE", "Researcher", "Power Electronics"];
 
 export default function Hero({ name, title, bio, cvUrl, profilePic }: HeroProps) {
   const [titleIndex, setTitleIndex] = useState(0);
@@ -90,8 +90,8 @@ export default function Hero({ name, title, bio, cvUrl, profilePic }: HeroProps)
               </div>
 
               {/* Animated Badge */}
-              <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-card border border-border px-5 py-2 rounded-full shadow-lg z-30">
-                <p className="text-[11px] uppercase tracking-widest font-semibold text-primary whitespace-nowrap">
+              <div className="absolute -bottom-4 -right-4 bg-card border border-border px-5 py-2 rounded-full shadow-lg z-30">
+                <p className="text-[10px] uppercase tracking-widest font-semibold text-primary whitespace-nowrap">
                   {titles[titleIndex]}
                 </p>
               </div>

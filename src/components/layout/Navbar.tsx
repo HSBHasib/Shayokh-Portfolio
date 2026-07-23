@@ -127,10 +127,14 @@ export default function Navbar({ logoUrl, name }: NavbarProps) {
           <div className="flex items-center gap-3">
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-full border border-border bg-card text-muted hover:text-foreground hover:bg-card/80 transition-all duration-300"
+              className="p-2 rounded-full border border-border bg-card text-muted hover:text-foreground hover:bg-card/80 transition-all duration-300 hover:rotate-45"
               aria-label="Toggle theme"
             >
-              {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+              {theme === "dark" ? (
+                <Sun size={18} className="transition-transform duration-300" />
+              ) : (
+                <Moon size={18} className="transition-transform duration-300" />
+              )}
             </button>
 
             {/* Mobile Menu Button */}
