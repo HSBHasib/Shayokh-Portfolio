@@ -1,6 +1,6 @@
 "use client";
 
-import { GraduationCap, MapPin, Calendar, Award } from "lucide-react";
+import { GraduationCap, MapPin, Calendar, BookOpen, Award } from "lucide-react";
 
 export default function Education() {
   return (
@@ -16,57 +16,61 @@ export default function Education() {
           </p>
         </div>
 
-        {/* Timeline */}
-        <div className="relative max-w-3xl mx-auto">
-          {/* Vertical Line */}
-          <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-primary/50 via-border to-border" />
-
-          {/* Timeline Item */}
-          <div className="relative">
-            {/* Timeline Dot */}
-            <div className="absolute left-6 md:left-1/2 md:-translate-x-1/2 top-8 w-5 h-5 bg-primary rounded-full border-4 border-background z-10 shadow-md" />
-
-            {/* Content Card */}
-            <div className="ml-16 md:ml-0 md:w-[45%] md:mr-auto md:pr-12">
-              <div className="bg-card rounded-2xl border border-border p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
-                {/* Year Badge */}
-                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium mb-4">
-                  <Calendar size={12} />
-                  2021 – 2025
-                </div>
-
-                {/* Degree */}
-                <h3 className="text-xl font-bold text-foreground mb-2">
-                  Bachelor of Electrical Engineering
-                </h3>
-
-                {/* University */}
-                <p className="text-primary font-medium mb-4">
-                  Nanjing University of Information Science and Technology (NUIST)
-                </p>
-
-                {/* Details */}
-                <div className="flex flex-wrap items-center gap-4 text-sm text-muted">
-                  <span className="flex items-center gap-1.5">
-                    <MapPin size={14} className="text-primary" />
-                    Nanjing, China
-                  </span>
-                  <span className="flex items-center gap-1.5">
-                    <Award size={14} className="text-primary" />
-                    Full Degree
-                  </span>
-                </div>
-
-                {/* Description */}
-                <p className="mt-4 text-sm text-muted leading-relaxed">
-                  Specialized in electrical power systems, control theory, and
-                  renewable energy technologies with focus on smart grid optimization.
-                </p>
+        {/* Horizontal Card */}
+        <div className="bg-card rounded-2xl border border-border p-8 shadow-sm hover:shadow-md transition-shadow duration-300">
+          <div className="flex flex-col md:flex-row gap-8">
+            {/* Left - Icon & Year */}
+            <div className="flex md:flex-col items-center md:items-start gap-4 md:gap-2 md:min-w-[120px]">
+              <div className="p-4 rounded-2xl bg-primary/10 text-primary">
+                <GraduationCap size={32} />
+              </div>
+              <div className="flex md:flex-col items-center gap-2">
+                <span className="text-sm font-bold text-primary">2021</span>
+                <div className="w-8 h-[2px] bg-border md:w-[2px] md:h-8" />
+                <span className="text-sm font-bold text-primary">2025</span>
               </div>
             </div>
 
-            {/* Empty space for right side */}
-            <div className="hidden md:block md:w-[45%]" />
+            {/* Right - Content */}
+            <div className="flex-1">
+              <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
+                <div>
+                  <h3 className="text-xl font-bold text-foreground mb-2">
+                    Bachelor of Electrical Engineering
+                  </h3>
+                  <p className="text-primary font-medium">
+                    Nanjing University of Information Science and Technology (NUIST)
+                  </p>
+                </div>
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium">
+                  <Award size={12} />
+                  Completed
+                </span>
+              </div>
+
+              {/* Info Row */}
+              <div className="flex flex-wrap items-center gap-4 text-sm text-muted mb-4">
+                <span className="flex items-center gap-1.5">
+                  <MapPin size={14} className="text-primary" />
+                  Nanjing, China
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <Calendar size={14} className="text-primary" />
+                  4 Years
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <BookOpen size={14} className="text-primary" />
+                  Full Time
+                </span>
+              </div>
+
+              {/* Description */}
+              <p className="text-sm text-muted leading-relaxed">
+                Specialized in electrical power systems, control theory, and
+                renewable energy technologies with focus on smart grid optimization
+                and power electronics research.
+              </p>
+            </div>
           </div>
         </div>
       </div>
