@@ -3,6 +3,7 @@ import { Lora } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/providers/ThemeProvider";
 import { Toaster } from "react-hot-toast";
+import PageLoader from "@/components/ui/PageLoader";
 
 const lora = Lora({
   variable: "--font-lora",
@@ -25,6 +26,7 @@ export default function RootLayout({
     <html lang="en" className={lora.variable} suppressHydrationWarning>
       <body>
         <ThemeProvider>
+          <PageLoader />
           {children}
           <Toaster position="top-right" />
         </ThemeProvider>

@@ -2,6 +2,7 @@
 
 import { FiHeart, FiMail, FiLink, FiGlobe } from "react-icons/fi";
 import { SocialLinks } from "@/types";
+import { FaFacebookSquare, FaLinkedin } from "react-icons/fa";
 
 interface FooterProps {
   socials: SocialLinks;
@@ -9,21 +10,19 @@ interface FooterProps {
 }
 
 const navLinks = [
-  { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
   { label: "Skills", href: "#skills" },
   { label: "Research", href: "#research" },
   { label: "Education", href: "#education" },
-  { label: "Contact", href: "#contact" },
 ];
 
 export default function Footer({ socials, name }: FooterProps) {
   return (
     <footer className="border-t border-border">
-      <div className="px-6 py-16 max-w-5xl mx-auto">
+      <div className="px-6 pt-14 max-w-5xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-6 gap-12">
           <div className="md:col-span-4">
-            <h2 className="text-xl font-bold tracking-tighter mb-3 text-foreground">
+            <h2 className="text-xl font-bold tracking-tighter mb-2 text-foreground">
               {name}
             </h2>
             <p className="text-sm leading-relaxed font-medium text-muted max-w-md">
@@ -61,7 +60,7 @@ export default function Footer({ socials, name }: FooterProps) {
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-sm text-muted hover:text-[#0077B5] transition-colors"
               >
-                <FiLink size={16} />
+                <FaLinkedin size={16} />
                 LinkedIn
               </a>
               <a
@@ -70,7 +69,7 @@ export default function Footer({ socials, name }: FooterProps) {
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-sm text-muted hover:text-[#1877F2] transition-colors"
               >
-                <FiGlobe size={16} />
+                <FaFacebookSquare size={16} />
                 Facebook
               </a>
               <a
@@ -84,8 +83,8 @@ export default function Footer({ socials, name }: FooterProps) {
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-border">
-          <p className="flex justify-center items-center gap-1.5 text-xs uppercase tracking-widest text-muted">
+        <div className="mt-12 py-6 border-t border-border">
+          <p className="flex justify-center items-center gap-1.5 text-[11px] uppercase tracking-widest text-muted">
             <FiHeart size={12} className="text-primary" />
             {new Date().getFullYear()} {name}. All rights reserved.
           </p>

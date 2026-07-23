@@ -81,27 +81,24 @@ export default function Skills({ skills }: SkillsProps) {
   };
 
   return (
-    <section id="skills" className="py-24 px-6">
+    <section id="skills" className="pb-24 px-6">
       <div className="max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-foreground">
             Skills
           </h2>
-          <p className="text-muted text-sm font-medium italic mt-2">
-            My Technical Level
-          </p>
-          <p className="text-muted/70 text-sm mt-3 max-w-xl mx-auto">
-            Technical expertise developed through academic research and hands-on projects in electrical engineering.
+          <p className="text-[#737373] text-sm mt-3 max-w-lg mx-auto">
+            Technical expertise developed through academic research and hands on projects in electrical engineering.
           </p>
         </motion.div>
 
-        <div className="relative overflow-hidden min-h-[280px]">
+        <div className="relative overflow-hidden">
           <AnimatePresence mode="wait" custom={direction}>
             <motion.div
               key={currentPage}

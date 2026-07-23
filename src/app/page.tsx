@@ -7,6 +7,7 @@ import Education from "@/components/sections/Education";
 import Contact from "@/components/sections/Contact";
 import Footer from "@/components/layout/Footer";
 import ScrollToTop from "@/components/ui/ScrollToTop";
+import FadeIn from "@/components/ui/FadeIn";
 import { portfolioData } from "@/data/portfolioData";
 
 export default function Home() {
@@ -24,24 +25,34 @@ export default function Home() {
         profilePic={siteAssets.profilePic}
       />
 
-      <About
-        name={personalInfo.name}
-        institution={personalInfo.institution}
-        degree={personalInfo.degree}
-        bio={personalInfo.bio}
-        aboutImage={siteAssets.aboutImage}
-      />
+      <FadeIn>
+        <About
+          name={personalInfo.name}
+          institution={personalInfo.institution}
+          degree={personalInfo.degree}
+          bio={personalInfo.bio}
+          aboutImage={siteAssets.aboutImage}
+        />
+      </FadeIn>
 
-      <Skills skills={skills} />
+      <FadeIn>
+        <Skills skills={skills} />
+      </FadeIn>
 
-      <Research researches={researches} />
+      <FadeIn>
+        <Research researches={researches} />
+      </FadeIn>
 
-      <Education />
+      <FadeIn>
+        <Education />
+      </FadeIn>
 
-      <Contact
-        email="hasibhsb19@gmail.com"
-        linkedIn={personalInfo.socials.linkedIn}
-      />
+      <FadeIn>
+        <Contact
+          email="hasibhsb19@gmail.com"
+          linkedIn={personalInfo.socials.linkedIn}
+        />
+      </FadeIn>
 
       <Footer socials={personalInfo.socials} name={personalInfo.name} />
 

@@ -1,26 +1,24 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { FiBook, FiMapPin, FiBookOpen, FiAward } from "react-icons/fi";
+import { FaGraduationCap } from "react-icons/fa";
+import { FiMapPin, FiBookOpen, FiAward } from "react-icons/fi";
 
 export default function Education() {
   return (
-    <section id="education" className="py-24 px-6">
+    <section id="education" className="pb-24 px-6">
       <div className="max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-foreground">
             Education
           </h2>
-          <p className="text-muted text-sm font-medium italic mt-2">
-            My Academic Journey
-          </p>
-          <p className="text-muted/70 text-sm mt-3 max-w-xl mx-auto">
+          <p className="text-[#737373] text-sm mt-3 max-w-lg mx-auto">
             Four years of dedicated study in electrical engineering at one of China&apos;s leading universities.
           </p>
         </motion.div>
@@ -35,13 +33,13 @@ export default function Education() {
           <div className="flex flex-col md:flex-row">
             {/* Left - Year */}
             <div className="md:w-48 bg-primary/5 border-b md:border-b-0 md:border-r border-border p-8 flex flex-col items-center justify-center gap-3">
-              <FiBook size={32} className="text-primary mb-1" />
+              <FaGraduationCap  size={35} className="text-primary mb-1" />
               <div className="flex md:flex-col items-center gap-3">
                 <span className="text-xl font-bold text-primary">2021</span>
                 <div className="w-8 h-[2px] bg-primary/30 md:w-[2px] md:h-8" />
                 <span className="text-xl font-bold text-primary">2025</span>
               </div>
-              <span className="text-xs text-muted mt-1">4 Years</span>
+              <span className="text-xs text-muted mt-1 font-mediumf">4 Years</span>
             </div>
 
             {/* Right - Content */}

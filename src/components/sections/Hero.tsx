@@ -28,22 +28,22 @@ export default function Hero({ name, title, bio, cvUrl, profilePic }: HeroProps)
     <section id="home" className="relative min-h-screen flex items-center">
       <div className="absolute top-1/3 left-0 w-[400px] h-[400px] bg-primary/8 rounded-full blur-[100px]" />
 
-      <div className="relative z-10 max-w-6xl mx-auto px-6 w-full pt-24 pb-16">
+      <div className="relative z-10 max-w-6xl mx-auto px-6 w-full">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div className="text-center lg:text-left">
-            <p className="text-primary font-medium mb-1 uppercase tracking-widest text-sm">
-              Hello, I&apos;m
+            <p className="text-primary font-medium mb-1 uppercase tracking-widest text-base">
+              Hello, I'm
             </p>
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-5 leading-tight text-foreground">
+            <h1 className="text-4xl md:text-5xl font-bold mb-3 leading-tight text-foreground">
               {name}
             </h1>
 
-            <h2 className="text-xl md:text-2xl text-muted mb-6">
+            <h2 className="text-xl md:text-2xl text-muted mb-3">
               {title}
             </h2>
 
-            <p className="text-muted mb-10 max-w-lg mx-auto lg:mx-0 leading-relaxed">
+            <p className="text-muted mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed">
               {bio}
             </p>
 

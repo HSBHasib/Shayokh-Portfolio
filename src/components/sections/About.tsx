@@ -19,16 +19,13 @@ export default function About({
   aboutImage,
 }: AboutProps) {
   return (
-    <section id="about" className="py-24 px-6">
+    <section id="about" className="pb-24 px-6">
       <div className="max-w-5xl mx-auto">
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground">
             About
           </h2>
-          <p className="text-muted text-sm font-medium italic mt-2">
-            My Introduction
-          </p>
-          <p className="text-muted/70 text-sm mt-3 max-w-xl mx-auto">
+          <p className="text-[#737373] text-sm mt-3 max-w-md mx-auto">
             Academic background and professional journey in electrical engineering research.
           </p>
         </div>
