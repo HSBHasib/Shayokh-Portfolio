@@ -12,7 +12,7 @@ const lora = Lora({
 });
 
 export const metadata: Metadata = {
-  title: "Md Shayokh Mondol | Energy & Electrical Engineering Researcher",
+  title: "Md Shayokh Mondol | Portfolio",
   description:
     "Academic portfolio of Md Shayokh Mondol - Energy & Electrical Engineering Researcher at NUIST, specializing in Cryogenic Energy Storage, Wide-Bandgap Semiconductors, and Smart Grid Optimization.",
 };
