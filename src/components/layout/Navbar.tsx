@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { FiMoon, FiSun, FiMenu, FiX } from "react-icons/fi";
 import { useTheme } from "@/providers/ThemeProvider";
@@ -33,32 +33,32 @@ export default function Navbar({ logoLight, logoDark, name }: NavbarProps) {
   ];
 
   useEffect(() => {
-    const handleScroll = () => {
-      const sections = ["home", "about", "skills", "research", "education", "contact"];
-      const navbarHeight = 80;
-      const scrollPosition = window.scrollY + navbarHeight + 100;
+    const sections = ["home", "about", "skills", "research", "education", "contact"];
+    const observers: IntersectionObserver[] = [];
 
-      let currentSection = "home";
-
-      for (const sectionId of sections) {
-        const section = document.getElementById(sectionId);
-        if (section) {
-          const sectionTop = section.offsetTop;
-          const sectionHeight = section.offsetHeight;
-
-          if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-            currentSection = sectionId;
-            break;
-          }
+    const callback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
         }
-      }
-
-      setActiveSection(currentSection);
+      });
     };
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
+    const options: IntersectionObserverInit = {
+      rootMargin: "-50% 0px -50% 0px",
+      threshold: 0,
+    };
+
+    sections.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) {
+        const observer = new IntersectionObserver(callback, options);
+        observer.observe(el);
+        observers.push(observer);
+      }
+    });
+
+    return () => observers.forEach((o) => o.disconnect());
   }, []);
 
   useEffect(() => {
