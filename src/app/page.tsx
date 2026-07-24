@@ -30,7 +30,7 @@ export default function Home() {
           name={personalInfo.name}
           institution={personalInfo.institution}
           degree={personalInfo.degree}
-          bio={personalInfo.bio}
+          detailedBio={personalInfo.detailedBio}
           aboutImage={siteAssets.aboutImage}
         />
       </FadeIn>

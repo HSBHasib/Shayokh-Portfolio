@@ -16,6 +16,7 @@ import {
   FiBookOpen,
   FiGlobe,
 } from "react-icons/fi";
+import { useLanguage } from "@/providers/LanguageProvider";
 
 interface SkillsProps {
   skills: string[];
@@ -38,7 +39,25 @@ const skillIcons: Record<string, React.ElementType> = {
   "Training and Development": FiBookOpen,
 };
 
+const skillTranslationKeys: Record<string, string> = {
+  "MATLAB Simulation": "skill.matlab",
+  "Control Theory": "skill.control",
+  "Electrical & Electronics Engineering": "skill.eee",
+  "Electrical Power Engineering": "skill.powerEng",
+  "Power Systems Analysis": "skill.powerAnalysis",
+  "Power Systems Simulation": "skill.powerSim",
+  "Renewable Energy Technologies": "skill.renewable",
+  "Automation & Robotics": "skill.automation",
+  "Power Generation": "skill.generation",
+  "Problem Solving": "skill.problem",
+  "Program Management": "skill.program",
+  "Digital Media": "skill.digital",
+  "Human Resources (HR)": "skill.hr",
+  "Training and Development": "skill.training",
+};
+
 export default function Skills({ skills }: SkillsProps) {
+  const { t } = useLanguage();
   const [currentPage, setCurrentPage] = useState(0);
   const [direction, setDirection] = useState(0);
   const itemsPerPage = 8;
@@ -81,7 +100,7 @@ export default function Skills({ skills }: SkillsProps) {
   };
 
   return (
-    <section id="skills" className="pb-24 px-6">
+    <section id="skills" className="pb-24 px-6 overflow-hidden">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -91,10 +110,10 @@ export default function Skills({ skills }: SkillsProps) {
           className="text-center mb-12"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-            Skills
+            {t("skills.title")}
           </h2>
           <p className="text-[#737373] text-sm mt-3 max-w-lg mx-auto">
-            Technical expertise developed through academic research and hands on projects in electrical engineering.
+            {t("skills.subtitle")}
           </p>
         </motion.div>
 
@@ -112,6 +131,8 @@ export default function Skills({ skills }: SkillsProps) {
             >
               {currentSkills.map((skill) => {
                 const Icon = skillIcons[skill] || FiCpu;
+                const translationKey = skillTranslationKeys[skill];
+                const displayName = translationKey ? t(translationKey) : skill;
                 return (
                   <div
                     key={skill}
@@ -121,7 +142,7 @@ export default function Skills({ skills }: SkillsProps) {
                       <Icon size={18} />
                     </div>
                     <span className="text-sm font-medium text-foreground">
-                      {skill}
+                      {displayName}
                     </span>
                   </div>
                 );

@@ -1,19 +1,12 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import { FiMoon, FiSun, FiMenu, FiX } from "react-icons/fi";
 import { useTheme } from "@/providers/ThemeProvider";
+import { useLanguage } from "@/providers/LanguageProvider";
 import { cn } from "@/lib/utils";
-
-const navLinks = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Skills", href: "#skills" },
-  { label: "Research", href: "#research" },
-  { label: "Education", href: "#education" },
-  { label: "Contact", href: "#contact" },
-];
+import { motion, AnimatePresence } from "framer-motion";
 
 interface NavbarProps {
   logoLight?: string;
@@ -23,27 +16,48 @@ interface NavbarProps {
 
 export default function Navbar({ logoLight, logoDark, name }: NavbarProps) {
   const { theme, toggleTheme } = useTheme();
+  const { language, toggleLanguage, t } = useLanguage();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const [indicatorStyle, setIndicatorStyle] = useState({ left: 0, width: 0 });
   const navRef = useRef<HTMLDivElement>(null);
   const linkRefs = useRef<Map<string, HTMLAnchorElement>>(new Map());
 
+  const navLinks = [
+    { label: t("nav.home"), href: "#home" },
+    { label: t("nav.about"), href: "#about" },
+    { label: t("nav.skills"), href: "#skills" },
+    { label: t("nav.research"), href: "#research" },
+    { label: t("nav.education"), href: "#education" },
+    { label: t("nav.contact"), href: "#contact" },
+  ];
+
   useEffect(() => {
     const handleScroll = () => {
-      const sections = navLinks.map((link) => link.href.replace("#", ""));
-      const scrollPosition = window.scrollY + 150;
+      const sections = ["home", "about", "skills", "research", "education", "contact"];
+      const navbarHeight = 80;
+      const scrollPosition = window.scrollY + navbarHeight + 100;
 
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const section = document.getElementById(sections[i]);
-        if (section && section.offsetTop <= scrollPosition) {
-          setActiveSection(sections[i]);
-          break;
+      let currentSection = "home";
+
+      for (const sectionId of sections) {
+        const section = document.getElementById(sectionId);
+        if (section) {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.offsetHeight;
+
+          if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+            currentSection = sectionId;
+            break;
+          }
         }
       }
+
+      setActiveSection(currentSection);
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -126,19 +140,54 @@ export default function Navbar({ logoLight, logoDark, name }: NavbarProps) {
               </div>
             </div>
 
-            {/* Right - Theme Toggle & Mobile Menu */}
+            {/* Right - Theme Toggle, Language Toggle & Mobile Menu */}
             <div className="flex items-center gap-2 md:gap-3">
-              <button
-                onClick={toggleTheme}
-                className="p-2 rounded-full border border-border bg-card text-muted hover:text-foreground hover:bg-card/80 transition-all duration-300"
-                aria-label="Toggle theme"
+              {/* Language Toggle */}
+              <motion.button
+                onClick={toggleLanguage}
+                className="px-3 py-1.5 rounded-full border border-border bg-card text-muted hover:text-foreground hover:bg-card/80 transition-colors duration-300 text-xs font-bold"
+                aria-label="Toggle language"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
-                {theme === "dark" ? (
-                  <FiSun size={18} />
-                ) : (
-                  <FiMoon size={18} />
-                )}
-              </button>
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={language}
+                    initial={{ y: 10, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    exit={{ y: -10, opacity: 0 }}
+                    transition={{ duration: 0.2, ease: "easeInOut" }}
+                    className="block"
+                  >
+                    {language === "en" ? "ENG" : "CH"}
+                  </motion.span>
+                </AnimatePresence>
+              </motion.button>
+
+              {/* Theme Toggle */}
+              <motion.button
+                onClick={toggleTheme}
+                className="p-2 rounded-full border border-border bg-card text-muted hover:text-foreground hover:bg-card/80 transition-colors duration-300"
+                aria-label="Toggle theme"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+              >
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={theme}
+                    initial={{ rotate: -90, opacity: 0 }}
+                    animate={{ rotate: 0, opacity: 1 }}
+                    exit={{ rotate: 90, opacity: 0 }}
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                  >
+                    {theme === "dark" ? (
+                      <FiSun size={18} />
+                    ) : (
+                      <FiMoon size={18} />
+                    )}
+                  </motion.div>
+                </AnimatePresence>
+              </motion.button>
 
               {/* Mobile Menu Button */}
               <button
@@ -178,7 +227,7 @@ export default function Navbar({ logoLight, logoDark, name }: NavbarProps) {
         >
           {/* Sidebar Header */}
           <div className="flex items-center justify-between p-4 border-b border-border">
-            <span className="font-semibold text-foreground">Menu</span>
+            <span className="font-semibold text-foreground">{t("nav.menu")}</span>
             <button
               onClick={() => setMobileOpen(false)}
               className="p-2 rounded-lg hover:bg-background text-muted hover:text-foreground transition-colors"

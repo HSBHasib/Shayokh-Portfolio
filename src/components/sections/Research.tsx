@@ -5,12 +5,21 @@ import { AnimatePresence, motion } from "framer-motion";
 import { FiCalendar, FiBookOpen, FiChevronLeft, FiChevronRight, FiFileText } from "react-icons/fi";
 import ResearchModal from "@/components/ui/ResearchModal";
 import { Research as ResearchType } from "@/types";
+import { useLanguage } from "@/providers/LanguageProvider";
 
 interface ResearchProps {
   researches: ResearchType[];
 }
 
+const researchTranslationKeys: Record<string, { title: string; journal: string }> = {
+  "research-1": { title: "research.title1", journal: "research.journal1" },
+  "research-2": { title: "research.title2", journal: "research.journal2" },
+  "research-3": { title: "research.title3", journal: "research.journal3" },
+  "research-4": { title: "research.title4", journal: "research.journal4" },
+};
+
 export default function Research({ researches }: ResearchProps) {
+  const { t } = useLanguage();
   const [selectedResearch, setSelectedResearch] = useState<ResearchType | null>(null);
   const [currentPage, setCurrentPage] = useState(0);
   const [direction, setDirection] = useState(0);
@@ -54,7 +63,7 @@ export default function Research({ researches }: ResearchProps) {
   };
 
   return (
-    <section id="research" className="pb-24 px-6">
+    <section id="research" className="pb-24 px-6 overflow-hidden">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -64,10 +73,10 @@ export default function Research({ researches }: ResearchProps) {
           className="text-center mb-12"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-            Research
+            {t("research.title")}
           </h2>
           <p className="text-[#737373] text-sm mt-3 max-w-lg mx-auto">
-            Research contributions in power electronics, optical communications, and energy storage systems.
+            {t("research.subtitle")}
           </p>
         </motion.div>
 
@@ -83,76 +92,82 @@ export default function Research({ researches }: ResearchProps) {
               transition={{ duration: 0.3, ease: "easeInOut" }}
               className="grid md:grid-cols-2 gap-6"
             >
-              {currentResearches.map((research) => (
-                <div
-                  key={research.id}
-                  className="group bg-card rounded-2xl border border-border p-6 hover:shadow-md transition-shadow duration-300 flex flex-col"
-                >
-                  <div className="flex-1">
-                    <h3 className="text-base font-semibold text-foreground mb-3 line-clamp-2 group-hover:text-primary transition-colors">
-                      {research.title}
-                    </h3>
-                    <p className="text-sm text-primary mb-3">{research.journal}</p>
+              {currentResearches.map((research) => {
+                const translationKeys = researchTranslationKeys[research.id];
+                const displayTitle = translationKeys ? t(translationKeys.title) : research.title;
+                const displayJournal = translationKeys ? t(translationKeys.journal) : research.journal;
 
-                    <div className="flex flex-wrap items-center gap-4 text-xs text-muted mb-4">
-                      <span className="flex items-center gap-1">
-                        <FiCalendar size={14} />
-                        {research.publicationDate}
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <FiBookOpen size={14} />
-                        {research.referencesCount} references
-                      </span>
+                return (
+                  <div
+                    key={research.id}
+                    className="group bg-card rounded-2xl border border-border p-6 hover:shadow-md transition-shadow duration-300 flex flex-col"
+                  >
+                    <div className="flex-1">
+                      <h3 className="text-base font-semibold text-foreground mb-3 line-clamp-2 group-hover:text-primary transition-colors">
+                        {displayTitle}
+                      </h3>
+                      <p className="text-sm text-primary mb-3">{displayJournal}</p>
+
+                      <div className="flex flex-wrap items-center gap-4 text-xs text-muted mb-4">
+                        <span className="flex items-center gap-1">
+                          <FiCalendar size={14} />
+                          {research.publicationDate}
+                        </span>
+                        <span className="flex items-center gap-1">
+                          <FiBookOpen size={14} />
+                          {research.referencesCount} {t("research.references")}
+                        </span>
+                      </div>
+
+                      <div className="flex flex-wrap gap-2 mb-5">
+                        {research.keywords.slice(0, 2).map((keyword) => (
+                          <span
+                            key={keyword}
+                            className="px-2.5 py-1 text-xs rounded-full bg-primary/10 text-primary"
+                          >
+                            {keyword}
+                          </span>
+                        ))}
+                        {research.keywords.length > 2 && (
+                          <span className="px-2.5 py-1 text-xs rounded-full bg-border text-muted">
+                            +{research.keywords.length - 2}
+                          </span>
+                        )}
+                      </div>
                     </div>
 
-                    <div className="flex flex-wrap gap-2 mb-5">
-                      {research.keywords.slice(0, 2).map((keyword) => (
-                        <span
-                          key={keyword}
-                          className="px-2.5 py-1 text-xs rounded-full bg-primary/10 text-primary"
+                    <div className="flex gap-3 mt-auto">
+                      <button
+                        onClick={() => setSelectedResearch(research)}
+                        className="flex-1 px-4 py-2.5 text-sm font-medium rounded-xl border border-border text-foreground hover:bg-background transition-colors"
+                      >
+                        {t("research.details")}
+                      </button>
+                      {research.pdfUrl ? (
+                        <a
+                          href={research.pdfUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex-1 px-4 py-2.5 text-sm font-medium rounded-xl hover:opacity-90 transition-colors flex items-center justify-center gap-2"
+                          style={{ backgroundColor: "var(--button-bg)", color: "var(--button-text)" }}
+                          onClick={(e) => e.stopPropagation()}
                         >
-                          {keyword}
-                        </span>
-                      ))}
-                      {research.keywords.length > 2 && (
-                        <span className="px-2.5 py-1 text-xs rounded-full bg-border text-muted">
-                          +{research.keywords.length - 2}
-                        </span>
+                          <FiFileText size={14} />
+                          {t("research.viewPDF")}
+                        </a>
+                      ) : (
+                        <button
+                          disabled
+                          className="flex-1 px-4 py-2.5 text-sm font-medium rounded-xl bg-muted/20 text-muted cursor-not-allowed flex items-center justify-center gap-2"
+                        >
+                          <FiFileText size={14} />
+                          Soon
+                        </button>
                       )}
                     </div>
                   </div>
-
-                  <div className="flex gap-3 mt-auto">
-                    <button
-                      onClick={() => setSelectedResearch(research)}
-                      className="flex-1 px-4 py-2.5 text-sm font-medium rounded-xl border border-border text-foreground hover:bg-background transition-colors"
-                    >
-                      Details
-                    </button>
-                    {research.pdfUrl ? (
-                      <a
-                        href={research.pdfUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex-1 px-4 py-2.5 text-sm font-medium rounded-xl hover:opacity-90 transition-colors flex items-center justify-center gap-2"
-                        style={{ backgroundColor: "var(--button-bg)", color: "var(--button-text)" }}
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        <FiFileText size={14} />
-                        View PDF
-                      </a>
-                    ) : (
-                      <button
-                        disabled
-                        className="flex-1 px-4 py-2.5 text-sm font-medium rounded-xl bg-muted/20 text-muted cursor-not-allowed flex items-center justify-center gap-2"
-                      >
-                        <FiFileText size={14} />
-                        Soon
-                      </button>
-                    )}
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </motion.div>
           </AnimatePresence>
         </div>

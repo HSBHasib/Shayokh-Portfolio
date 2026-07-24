@@ -1,27 +1,31 @@
 "use client";
 
-import { FiHeart, FiMail, FiLink, FiGlobe } from "react-icons/fi";
+import { FiHeart, FiMail } from "react-icons/fi";
 import { SocialLinks } from "@/types";
-import { FaFacebookSquare, FaLinkedin } from "react-icons/fa";
+import { FaFacebookSquare, FaLinkedin, FaResearchgate, FaGoogle } from "react-icons/fa";
+import { useLanguage } from "@/providers/LanguageProvider";
 
 interface FooterProps {
   socials: SocialLinks;
   name: string;
 }
 
-const navLinks = [
-  { label: "About", href: "#about" },
-  { label: "Skills", href: "#skills" },
-  { label: "Research", href: "#research" },
-  { label: "Education", href: "#education" },
-];
-
 export default function Footer({ socials, name }: FooterProps) {
+  const { t } = useLanguage();
+
+  const navLinks = [
+    { label: t("nav.about"), href: "#about" },
+    { label: t("nav.skills"), href: "#skills" },
+    { label: t("nav.research"), href: "#research" },
+    { label: t("nav.education"), href: "#education" },
+  ];
+
   return (
     <footer className="border-t border-border">
       <div className="px-6 pt-14 max-w-6xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-6 gap-12">
-          <div className="md:col-span-4">
+          {/* Name & Description */}
+          <div className="md:col-span-3">
             <h2 className="text-xl font-bold tracking-tighter mb-2 text-foreground">
               {name}
             </h2>
@@ -31,9 +35,10 @@ export default function Footer({ socials, name }: FooterProps) {
             </p>
           </div>
 
-          <div className="col-span-1">
+          {/* Quick Links */}
+          <div className="md:col-span-1">
             <h3 className="text-sm font-bold uppercase mb-4 text-foreground">
-              Quick Links
+              {t("footer.quickLinks")}
             </h3>
             <ul className="space-y-3 text-sm font-medium text-muted">
               {navLinks.map((link) => (
@@ -49,9 +54,10 @@ export default function Footer({ socials, name }: FooterProps) {
             </ul>
           </div>
 
-          <div className="col-span-1">
+          {/* Connect */}
+          <div className="md:col-span-1">
             <h3 className="text-sm font-bold uppercase mb-4 text-foreground">
-              Connect
+              {t("footer.connect")}
             </h3>
             <div className="flex flex-col gap-3">
               <a
@@ -81,12 +87,39 @@ export default function Footer({ socials, name }: FooterProps) {
               </a>
             </div>
           </div>
+
+          {/* Social Links - New Section */}
+          <div className="md:col-span-1">
+            <h3 className="text-sm font-bold uppercase mb-4 text-foreground">
+              {t("footer.socialLinks")}
+            </h3>
+            <div className="flex flex-col gap-3">
+              <a
+                href={socials.researchGate}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-sm text-muted hover:text-[#00CCBB] transition-colors"
+              >
+                <FaResearchgate size={16} />
+                ResearchGate
+              </a>
+              <a
+                href={socials.googleScholar}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-sm text-muted hover:text-[#4285F4] transition-colors"
+              >
+                <FaGoogle size={16} />
+                Google Scholar
+              </a>
+            </div>
+          </div>
         </div>
 
         <div className="mt-12 py-6 border-t border-border">
           <p className="flex justify-center items-center gap-1.5 text-[11px] uppercase tracking-widest text-muted">
             <FiHeart size={12} className="text-primary" />
-            {new Date().getFullYear()} {name}. All rights reserved.
+            {new Date().getFullYear()} {name}. {t("footer.copyright")}
           </p>
         </div>
       </div>

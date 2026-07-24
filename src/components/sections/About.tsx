@@ -2,13 +2,14 @@
 
 import Image from "next/image";
 import { FaGraduationCap } from "react-icons/fa";
-import { FiBook, FiMapPin, FiCalendar } from "react-icons/fi";
+import { FiMapPin, FiCalendar } from "react-icons/fi";
+import { useLanguage } from "@/providers/LanguageProvider";
 
 interface AboutProps {
   name: string;
   institution: string;
   degree: string;
-  bio: string;
+  detailedBio: string;
   aboutImage: string;
 }
 
@@ -16,68 +17,73 @@ export default function About({
   name,
   institution,
   degree,
-  bio,
+  detailedBio,
   aboutImage,
 }: AboutProps) {
+  const { t } = useLanguage();
+
   return (
-    <section id="about" className="pb-24 px-6">
+    <section id="about" className="py-20 px-6">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-            About
+            {t("about.title")}
           </h2>
-          <p className="text-[#737373] text-sm mt-3 max-w-md mx-auto">
-            Academic background and professional journey in electrical engineering research.
+          <p className="text-muted text-sm mt-3 max-w-md mx-auto">
+            {t("about.subtitle")}
           </p>
         </div>
 
-        <div className="flex flex-col md:flex-row items-center md:items-start gap-10">
-          <div className="w-full md:flex-1 max-w-87.5 md:max-w-100">
-            <div className="relative w-full aspect-square rounded-2xl overflow-hidden border border-border bg-card shadow-lg">
+        <div className="flex flex-col lg:flex-row gap-10 lg:gap-14 items-start">
+          {/* Left - Image Only */}
+          <div className="w-full lg:w-[350px] flex-shrink-0">
+            <div className="relative w-full max-w-[350px] mx-auto aspect-[4/5] rounded-2xl overflow-hidden border border-border bg-card shadow-lg">
               <Image
                 src={aboutImage}
                 alt={name}
                 fill
                 className="object-cover"
-                sizes="(max-width: 768px) 350px, 400px"
+                sizes="(max-width: 768px) 260px, 300px"
                 loading="lazy"
               />
             </div>
           </div>
 
-          <div className="w-full md:flex-1 flex flex-col gap-10">
-            <div className="grid grid-cols-2 sm:grid-cols-2 gap-5">
-              <div className="bg-card rounded-2xl border border-border p-5 text-center shadow-sm">
-                <div className="text-3xl font-bold text-primary mb-1">4+</div>
-                <div className="text-xs text-muted">Publications</div>
+          {/* Right - All Info */}
+          <div className="flex-1 flex flex-col gap-6">
+            {/* Stats Row */}
+            <div className="grid grid-cols-3 gap-4">
+              <div className="bg-card rounded-xl border border-border p-4 text-center shadow-sm">
+                <div className="text-2xl font-bold text-primary mb-1">4+</div>
+                <div className="text-xs text-muted">{t("about.publications")}</div>
               </div>
-              <div className="bg-card rounded-2xl border border-border p-5 text-center shadow-sm">
-                <div className="text-3xl font-bold text-primary mb-1">14</div>
-                <div className="text-xs text-muted">Skills</div>
+              <div className="bg-card rounded-xl border border-border p-4 text-center shadow-sm">
+                <div className="text-2xl font-bold text-primary mb-1">14</div>
+                <div className="text-xs text-muted">{t("about.skills")}</div>
+              </div>
+              <div className="bg-card rounded-xl border border-border p-4 text-center shadow-sm">
+                <div className="text-2xl font-bold text-primary mb-1">3</div>
+                <div className="text-xs text-muted">{t("about.researchAreas")}</div>
               </div>
             </div>
 
-            <p className="text-muted leading-relaxed text-base">
-              {bio}
+            {/* Bio */}
+            <p className="text-muted leading-relaxed text-[15px]">
+              {t("personal.detailedBio")}
             </p>
 
-            <div className="flex flex-col gap-4">
-              <div className="flex items-center gap-4 text-muted">
-                <div className="p-2.5 rounded-lg bg-primary/10 text-primary">
-                  <FaGraduationCap size={20} />
-                </div>
-                <span className="text-sm">{degree}</span>
+            {/* Education - Simple */}
+            <div className="flex flex-col gap-3">
+              <div className="flex items-center gap-3 text-muted">
+                <FaGraduationCap size={18} className="text-primary" />
+                <span className="text-sm">{t("personal.degree")}</span>
               </div>
-              <div className="flex items-center gap-4 text-muted">
-                <div className="p-2.5 rounded-lg bg-primary/10 text-primary">
-                  <FiMapPin size={20} />
-                </div>
-                <span className="text-sm">{institution}</span>
+              <div className="flex items-center gap-3 text-muted">
+                <FiMapPin size={18} className="text-primary" />
+                <span className="text-sm">{t("personal.institution")}</span>
               </div>
-              <div className="flex items-center gap-4 text-muted">
-                <div className="p-2.5 rounded-lg bg-primary/10 text-primary">
-                  <FiCalendar size={20} />
-                </div>
+              <div className="flex items-center gap-3 text-muted">
+                <FiCalendar size={18} className="text-primary" />
                 <span className="text-sm">2021 – 2025</span>
               </div>
             </div>

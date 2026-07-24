@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
-import { Lora } from "next/font/google";
+import { Castoro } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/providers/ThemeProvider";
+import { LanguageProvider } from "@/providers/LanguageProvider";
 import { Toaster } from "react-hot-toast";
 import PageLoader from "@/components/ui/PageLoader";
 
-const lora = Lora({
-  variable: "--font-lora",
+const castoro = Castoro({
+  variable: "--font-castoro",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400"],
 });
 
 export const metadata: Metadata = {
@@ -23,12 +24,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={lora.variable} suppressHydrationWarning>
+    <html lang="en" className={castoro.variable} suppressHydrationWarning>
+      <head>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body>
         <ThemeProvider>
-          <PageLoader />
-          {children}
-          <Toaster position="top-right" />
+          <LanguageProvider>
+            <PageLoader />
+            {children}
+            <Toaster position="top-right" />
+          </LanguageProvider>
         </ThemeProvider>
       </body>
     </html>

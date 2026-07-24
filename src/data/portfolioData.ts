@@ -8,12 +8,17 @@ export const portfolioData: PortfolioData = {
     aboutImage: "https://lh3.googleusercontent.com/d/1zQ_lJ5z0MnEU4Wtwc_FuXlAkMpDkPNbc",
     cv: "https://drive.google.com/file/d/1f0i-soW-7_ecmCTiGUDO4JZmXssGhBlI/view?usp=sharing",
   },
-  personalInfo: {
+  personalInfo: { 
     name: "Md Shayokh Mondol",
     title: "Energy & Electrical Engineering Researcher",
     institution: "Nanjing University of Information Science and Technology (NUIST), Nanjing, China",
     degree: "Bachelor of Electrical Engineering (2021 – 2025)",
-    bio: "Specializing in Cryogenic Energy Storage (CES), Wide-Bandgap Semiconductors (SiC/GaN), and Smart Grid Optimization.",
+    bio: [
+      "Specializing in Cryogenic Energy Storage (CES), Wide-Bandgap Semiconductors (SiC/GaN), and Smart Grid Optimization.",
+      "Engineering Next-Generation Power Electronics & High-Efficiency Energy Conversion Systems.",
+      "Exploring Optical Fiber Communications, DWDM Systems & Advanced Power Grid Control."
+    ],
+    detailedBio: "Md Shayokh Mondol is a dedicated researcher in Electrical Engineering currently completing his Bachelor's degree at Nanjing University of Information Science and Technology (NUIST). His academic trajectory focuses on solving key energy transition challenges through high-efficiency power electronics, next-generation semiconductor materials like SiC and GaN, and advanced Cryogenic Energy Storage (CES) systems. Moving forward, he aims to advance smart grid optimization using artificial intelligence algorithms (MPC and Reinforcement Learning) and pursue graduate-level research to engineer sustainable, ultra-efficient power conversion and storage architectures for global renewable grids.",
     socials: {
       researchGate: "https://www.researchgate.net/profile/Md-Shayokh-Mondol",
       googleScholar: "https://scholar.google.com/citations?user=9fCguakAAAAJ&hl=en",

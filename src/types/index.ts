@@ -18,7 +18,8 @@ export interface PersonalInfo {
   title: string;
   institution: string;
   degree: string;
-  bio: string;
+  bio: string[];
+  detailedBio: string;
   socials: SocialLinks;
 }
 

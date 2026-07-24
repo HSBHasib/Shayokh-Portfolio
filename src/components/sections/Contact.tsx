@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { FiMail, FiSend, FiLoader, FiLink, FiMessageCircle } from "react-icons/fi";
 import toast from "react-hot-toast";
+import { useLanguage } from "@/providers/LanguageProvider";
 
 interface ContactProps {
   email: string;
@@ -17,6 +18,7 @@ interface ContactFormData {
 }
 
 export default function Contact({ email, linkedIn }: ContactProps) {
+  const { t } = useLanguage();
   const [formData, setFormData] = useState<ContactFormData>({
     name: "",
     email: "",
@@ -60,10 +62,10 @@ export default function Contact({ email, linkedIn }: ContactProps) {
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-            Get in Touch
+            {t("contact.title")}
           </h2>
           <p className="text-[#737373] text-sm mt-3 max-w-md mx-auto">
-            Feel free to reach out for collaborations, research opportunities, or academic inquiries.
+            {t("contact.subtitle")}
           </p>
         </div>
 
@@ -77,7 +79,7 @@ export default function Contact({ email, linkedIn }: ContactProps) {
                 <FiMail size={20} />
               </div>
               <div>
-                <p className="text-xs text-muted">Email</p>
+                <p className="text-xs text-muted">{t("contact.emailLabel")}</p>
                 <p className="text-sm text-foreground font-medium">{email}</p>
               </div>
             </a>
@@ -92,7 +94,7 @@ export default function Contact({ email, linkedIn }: ContactProps) {
                 <FiLink size={20} />
               </div>
               <div>
-                <p className="text-xs text-muted">LinkedIn</p>
+                <p className="text-xs text-muted">{t("contact.linkedinLabel")}</p>
                 <p className="text-sm text-foreground font-medium">Md Shayokh Mondol</p>
               </div>
             </a>
@@ -123,7 +125,7 @@ export default function Contact({ email, linkedIn }: ContactProps) {
                   onChange={handleChange}
                   required
                   className="w-full px-4 py-3.5 bg-background border border-border rounded-xl text-foreground placeholder:text-muted focus:outline-none focus:border-primary transition-colors text-sm"
-                  placeholder="Your name"
+                  placeholder={t("contact.name")}
                 />
                 <input
                   type="email"
@@ -132,7 +134,7 @@ export default function Contact({ email, linkedIn }: ContactProps) {
                   onChange={handleChange}
                   required
                   className="w-full px-4 py-3.5 bg-background border border-border rounded-xl text-foreground placeholder:text-muted focus:outline-none focus:border-primary transition-colors text-sm"
-                  placeholder="your@email.com"
+                  placeholder={t("contact.email")}
                 />
               </div>
 
@@ -143,7 +145,7 @@ export default function Contact({ email, linkedIn }: ContactProps) {
                 onChange={handleChange}
                 required
                 className="w-full px-4 py-3.5 bg-background border border-border rounded-xl text-foreground placeholder:text-muted focus:outline-none focus:border-primary transition-colors text-sm"
-                placeholder="Subject"
+                placeholder={t("contact.subject")}
               />
 
               <textarea
@@ -153,7 +155,7 @@ export default function Contact({ email, linkedIn }: ContactProps) {
                 required
                 rows={5}
                 className="w-full px-4 py-3.5 bg-background border border-border rounded-xl text-foreground placeholder:text-muted focus:outline-none focus:border-primary transition-colors text-sm resize-none"
-                placeholder="Your message..."
+                placeholder={t("contact.message")}
               />
 
               <button
@@ -165,12 +167,12 @@ export default function Contact({ email, linkedIn }: ContactProps) {
                 {loading ? (
                   <>
                     <FiLoader size={16} className="animate-spin" />
-                    Sending...
+                    {t("contact.send")}...
                   </>
                 ) : (
                   <>
                     <FiSend size={16} />
-                    Send Message
+                    {t("contact.send")}
                   </>
                 )}
               </button>
